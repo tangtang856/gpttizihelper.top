@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Bing SEO 专项配置与站点地图声明
+Sitemap: https://gpttizihelper.top/sitemap.xml
