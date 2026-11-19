@@ -89,14 +89,69 @@ const keywords = `${cleanName}, ${cleanName}如何, ${cleanName}怎么样, ${cle
       </div>
     </div>
 
+    <!-- 套餐明细表 -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <h2 class="text-base font-bold text-slate-900 mb-4">套餐价格与资费明细</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+            <tr>
+              <th class="py-3 px-3">套餐名称</th>
+              <th class="py-3 px-3">周期资费</th>
+              <th class="py-3 px-3">可用流量</th>
+              <th class="py-3 px-3">单GB成本</th>
+              <th class="py-3 px-3">规格说明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {airport.plans.map((p) => (
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 px-3 font-bold text-slate-900">{p.name}</td>
+                <td class="py-3 px-3 font-bold text-blue-600">¥{p.price}/{p.period}</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">{p.trafficGb} GB</td>
+                <td class="py-3 px-3 text-emerald-600 font-bold">{p.unitPricePerGb.toFixed(3)} 元/GB</td>
+                <td class="py-3 px-3 text-slate-500">{p.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 评测引导 Banner -->
     <div class="flex items-center justify-between p-5 bg-blue-50 border border-blue-200 rounded-2xl">
       <div>
         <div class="font-bold text-sm text-blue-900">想看完整的晚高峰丢包压测与解锁分析？</div>
         <div class="text-xs text-blue-700 mt-0.5">阅读编辑部发布的 {airport.name} 独立图文评测报告</div>
       </div>
       <a href={`/review/${airport.slug}/`} class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm whitespace-nowrap">
-        查看完整评测 &rarr;
+        查看独立深度评测 &rarr;
       </a>
+    </div>
+
+    <!-- 其他品牌技术档案导航 -->
+    <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">
+          其他 13 家机场品牌技术参数档案
+        </h3>
+        <a href="/airport/" class="text-xs text-blue-600 hover:underline">
+          查看全部档案 &rarr;
+        </a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+        {airports.filter(a => a.id !== airport.id).map((other) => {
+          const oName = other.name.replace(/（[^）]*）/g, '').split(' ')[0];
+          return (
+            <a
+              href={`/airport/${other.slug}/`}
+              class="p-2 bg-white rounded-lg border border-slate-200 hover:border-blue-300 text-slate-700 hover:text-blue-600 truncate block transition-colors"
+            >
+              {oName} 参数档案
+            </a>
+          );
+        })}
+      </div>
     </div>
   </div>
 </Layout>

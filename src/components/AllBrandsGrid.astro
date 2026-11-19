@@ -1,0 +1,107 @@
+---
+import { airports } from '../data/airports';
+---
+
+<section class="py-16 bg-slate-50 border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 mb-3 shadow-sm">
+        <span>🏢 官方收录 · 一机一档独立页面</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        2026年 14 大主流机场独立专属评测专区
+      </h2>
+      <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+        拒绝千篇一律的大杂烩！本站收录的全部 14 个品牌均拥有<strong>完全独立、单独的技术档案与深度评测页面</strong>。点击任意品牌卡片，即可直达该品牌的专属深度页面。
+      </p>
+    </div>
+
+    <!-- 14 Brand Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      {airports.map((airport, idx) => {
+        const cleanName = airport.name.replace(/（[^）]*）/g, '').split(' ')[0];
+        const isIplc = ['breezenet', 'muguang', 'flashleap', 'yinxingren', 'wuyou'].includes(airport.id);
+
+        return (
+          <div class="flex flex-col justify-between bg-white rounded-2xl border border-slate-200 hover:border-blue-300 p-5 shadow-sm hover:shadow-md transition-all duration-200 group">
+            <div>
+              <!-- Header -->
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-mono">
+                  #{idx + 1}
+                </span>
+                <span class="text-xs font-extrabold text-blue-600">
+                  ¥{airport.startingPrice} <span class="text-[10px] text-slate-400 font-normal">/{airport.plans[0].period}</span>
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <a href={`/review/${airport.slug}/`} class="hover:underline">
+                  {airport.name}
+                </a>
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                {airport.description}
+              </p>
+
+              <!-- Specs Mini Grid -->
+              <div class="grid grid-cols-2 gap-1.5 my-3 p-2.5 bg-slate-50 rounded-xl text-[11px]">
+                <div>
+                  <span class="text-slate-400 block text-[9px]">可用流量</span>
+                  <span class="font-bold text-slate-800">{airport.plans[0].trafficGb} GB</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[9px]">单GB成本</span>
+                  <span class="font-bold text-blue-600">{airport.plans[0].unitPricePerGb.toFixed(3)} 元</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[9px]">节点覆盖</span>
+                  <span class="font-bold text-slate-700 truncate block">{airport.regions.slice(0, 2).join('、')}等</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[9px]">线路架构</span>
+                  <span class="font-bold text-emerald-600 truncate block">{isIplc ? 'IPLC专线' : '高优中转'}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="pt-3 border-t border-slate-100 space-y-2">
+              <a
+                href={`/review/${airport.slug}/`}
+                class="block w-full py-2 text-center text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors"
+              >
+                👉 查看 {cleanName} 独立评测页面
+              </a>
+              <div class="flex items-center justify-between text-[11px] px-1 text-slate-400">
+                <a href={`/airport/${airport.slug}/`} class="hover:text-blue-600 hover:underline">
+                  技术参数档案
+                </a>
+                <a
+                  href={airport.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  class="text-blue-600 font-semibold hover:underline"
+                >
+                  官网直达 &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Bottom Link -->
+    <div class="text-center mt-10">
+      <a
+        href="/review/"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-sm transition-all hover:scale-[1.01]"
+      >
+        <span>🏢 浏览全部 14 个品牌独立专区主页</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>

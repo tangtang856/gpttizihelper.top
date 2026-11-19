@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TopPicks from '../components/TopPicks.astro';
+import AllBrandsGrid from '../components/AllBrandsGrid.astro';
 import CompareMatrix from '../components/CompareMatrix.astro';
 import ScenarioGuide from '../components/ScenarioGuide.astro';
 import { allGuides } from '../data/allGuides';
@@ -38,11 +39,17 @@ const pageKeywords = "机场推荐, 机场节点, 性价比机场, 梯子推荐,
         还在对着 ChatGPT 的 <code>Access Denied</code> 抓狂？晚上8点想看个4K视频却一直在转圈圈？别焦虑，你的<strong>GPT梯子机场帮手</strong>带着真机实测数据来救场了！我们不讲空洞套话、不发虚假测速图，直接帮你扒开虚标商家的底裤：算清每一分钱的<strong>性价比机场</strong>每GB真实单价，全天候盯紧防断联高抗封的<strong>VPN机场</strong>与高可用<strong>VPN节点</strong>。无论是月付4.9元的平民学生党穷鬼套餐，还是晚高峰零丢包的企业级IPLC专线<strong>梯子推荐</strong>与客观<strong>VPN推荐</strong>，跟着帮手闭眼选，出海冲浪爽到飞起！
       </p>
 
-      <!-- 4 Action Buttons Side-by-Side -->
-      <div class="mt-8 flex flex-wrap lg:flex-nowrap items-center justify-center gap-2.5 sm:gap-3 max-w-5xl mx-auto">
+      <!-- 5 Action Buttons Side-by-Side -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-5xl mx-auto">
+        <a
+          href="/review/"
+          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm shadow-blue-500/20 transition-all hover:scale-[1.02] whitespace-nowrap"
+        >
+          🏢 14大品牌独立专区
+        </a>
         <a
           href="/recommend/budget/"
-          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm shadow-blue-500/20 transition-all hover:scale-[1.02] whitespace-nowrap"
+          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all hover:scale-[1.02] whitespace-nowrap"
         >
           💰 薅羊毛·白菜价推荐
         </a>
@@ -50,19 +57,19 @@ const pageKeywords = "机场推荐, 机场节点, 性价比机场, 梯子推荐,
           href="/ranking/overall/"
           class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all hover:scale-[1.02] whitespace-nowrap"
         >
-          🏆 2026封神榜·综合天梯
+          🏆 综合天梯榜
         </a>
         <a
           href="/compare/"
           class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all hover:scale-[1.02] whitespace-nowrap"
         >
-          ⚖️ 14家拉出来溜溜·在线PK
+          ⚖️ 14家在线PK
         </a>
         <a
           href="/guides/"
           class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all hover:scale-[1.02] whitespace-nowrap"
         >
-          💻 小白救命·全套教程 (30篇)
+          💻 小白教程 (30篇)
         </a>
       </div>
 
@@ -91,10 +98,13 @@ const pageKeywords = "机场推荐, 机场节点, 性价比机场, 梯子推荐,
   <!-- Section 1: TOP 4 避坑神机 (精选推荐，告别堆砌) -->
   <TopPicks />
 
-  <!-- Section 2: 场景决策向导 (按需求快速对号入座) -->
+  <!-- Section 2: 14 大主流机场独立专属评测专区 -->
+  <AllBrandsGrid />
+
+  <!-- Section 3: 场景决策向导 (按需求快速对号入座) -->
   <ScenarioGuide />
 
-  <!-- Section 3: 14 品牌速查对比矩阵 (全量数据，Tab交互过滤) -->
+  <!-- Section 4: 14 品牌速查对比矩阵 (全量数据，Tab交互过滤) -->
   <CompareMatrix />
 
   <!-- Section 4: 客户端精选教程与技术文章 -->
