@@ -13,21 +13,21 @@
 
 | 检查大项 | 具体检查指标 | 检验范围 | 结果状态 | 详细说明 |
 | :--- | :--- | :--- | :---: | :--- |
-| **Bing SEO 技术规范** | 页面 Title 存在性与唯一性 | 全站 60 页面 | **PASS** | 100% 具备自然中文 Title，无重复 |
-| **Bing SEO 技术规范** | Meta Description 完整性 | 全站 60 页面 | **PASS** | 100% 具备原创摘要描述 |
-| **Bing SEO 技术规范** | H1 标签唯一性 | 全站 60 页面 | **PASS** | 每个页面严格且仅有 1 个 H1 标签 |
-| **Bing SEO 技术规范** | Canonical 规范标签 | 全站 60 页面 | **PASS** | 全部指向 https://gpttizihelper.top/ 正式域名 |
-| **Bing SEO 技术规范** | Robots Meta 声明 | 全站 60 页面 | **PASS** | 统一声明 `index, follow` |
+| **Bing SEO 技术规范** | 页面 Title 存在性与唯一性 | 全站 183 页面 | **PASS** | 100% 具备自然中文 Title，无重复 |
+| **Bing SEO 技术规范** | Meta Description 完整性 | 全站 183 页面 | **PASS** | 100% 具备原创摘要描述 |
+| **Bing SEO 技术规范** | H1 标签唯一性 | 全站 183 页面 | **PASS** | 每个页面严格且仅有 1 个 H1 标签 |
+| **Bing SEO 技术规范** | Canonical 规范标签 | 全站 183 页面 | **PASS** | 全部指向 https://gpttizihelper.top/ 正式域名 |
+| **Bing SEO 技术规范** | Robots Meta 声明 | 全站 183 页面 | **PASS** | 统一声明 `index, follow` |
 | **Bing SEO 技术规范** | Schema 结构化数据 | 首页及主要落地页 | **PASS** | WebSite, Organization, JSON-LD 语法无误 |
 | **Bing SEO 技术规范** | Sitemap.xml | 根目录 | **PASS** | 收录全部正式页面，包含 lastmod 属性 |
 | **Bing SEO 技术规范** | Robots.txt | 根目录 | **PASS** | 正确指向 sitemap.xml，允许正常抓取 |
 | **Bing SEO 技术规范** | IndexNow 支持 | 根目录与脚本 | **PASS** | API Key 文件存在，提供 npm run indexnow 提交工具 |
 | **Bing SEO 技术规范** | Bing 站点验证 | 根目录 | **PASS** | BingSiteAuth.xml 已配置 |
-| **相对路径与离线运行** | 内链禁止根绝对路径 | 全站 60 页面 | **PASS** | 0 处以 `/` 开头的 href/src 链接 |
+| **相对路径与离线运行** | 内链禁止根绝对路径 | 全站 183 页面 | **PASS** | 0 处以 `/` 开头的 href/src 链接 |
 | **相对路径与离线运行** | 本地文件存在性 (无死链) | 3000+ 处内链 | **PASS** | 目标 HTML、CSS、JS 文件在磁盘 100% 存在 |
 | **相对路径与离线运行** | file:// 双击协议秒开 | 本地浏览器测试 | **PASS** | 无重型框架与外部打包器依赖，纯原生运行 |
-| **内容与架构质量** | 空白页面检查 | 全站 60 页面 | **PASS** | 最小页面 > 1.5KB，正文字数充足 |
-| **内容与架构质量** | 未替换占位符 | 全站 60 页面 | **PASS** | 无任何 {{...}}、undefined、NaN、TODO 遗留 |
+| **内容与架构质量** | 空白页面检查 | 全站 183 页面 | **PASS** | 最小页面 > 1.5KB，正文字数充足 |
+| **内容与架构质量** | 未替换占位符 | 全站 183 页面 | **PASS** | 无任何 {{...}}、undefined、NaN、TODO 遗留 |
 | **内容与架构质量** | 统一机场数据库模型 | src/data/airports.js | **PASS** | 包含 14 大品牌真实价格、流量、优惠码、实测数据 |
 | **交互与用户体验** | 机场横向参数对比工具 | /compare/index.html | **PASS** | 纯原生 JS 动态比对 14 家机场 |
 | **交互与用户体验** | 全局站内轻量搜索框 | 全站 (Ctrl+K) | **PASS** | 纯客户端轻量索引，毫秒级响应检索 |
@@ -50,7 +50,7 @@
 - **网络技术术语百科 (glossary/)**: 5 个 (IPLC专线、BGP中转、Clash分流、Hysteria2、节点倍率)
 - **信任与合规页面 (Trust & Legal)**: 6 个 (关于、联系、编辑政策、隐私政策、免责声明、404)
 
-**总计创建页面数**: **60 个完整页面**
+**总计创建页面数**: **183 个完整页面**
 
 ---
 

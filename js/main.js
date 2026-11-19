@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     { title: '全球云 深度评测（多线中转优化双协议）', path: 'review/quanqiuyun.html', keywords: '全球云 评测 优惠码 tt88' },
 
     // 教程与博客
+    { title: '全平台客户端配置与使用教程中心 (30篇保姆级指南)', path: 'guides/index.html', keywords: '教程中心 全部教程 30篇 Win Mac iOS 安卓 软路由 Apple TV' },
+    { title: '科学上网选购指南与深度博文大全 (100篇精品长文)', path: 'blog/index.html', keywords: '博客大全 全部文章 100篇 选购 避坑 专线 ChatGPT 流媒体' },
     { title: 'Windows系统Clash Verge与v2rayN上手教程', path: 'guides/windows.html', keywords: 'Windows Clash Verge v2rayN 教程 节点' },
     { title: 'Android安卓Clash Meta与Sing-box教程', path: 'guides/android.html', keywords: '安卓 Android Clash Sing-box 教程' },
     { title: 'iOS苹果Shadowrocket小火箭与Surge教程', path: 'guides/ios.html', keywords: 'iOS 苹果 小火箭 Shadowrocket Surge 教程' },

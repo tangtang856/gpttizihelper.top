@@ -43,8 +43,8 @@
         <a href="../recommend/budget.html" class="nav-link ">机场推荐</a>
         <a href="../ranking/overall.html" class="nav-link ">机场排行</a>
         <a href="../compare/index.html" class="nav-link ">机场对比</a>
-        <a href="../guides/windows.html" class="nav-link active">使用教程</a>
-        <a href="../blog/how-to-choose-airport-in-2026.html" class="nav-link ">选购指南</a>
+        <a href="../guides/index.html" class="nav-link active">使用教程</a>
+        <a href="../blog/index.html" class="nav-link ">选购指南</a>
         <a href="../glossary/iplc-专线.html" class="nav-link ">术语百科</a>
       </nav>
 
@@ -68,8 +68,8 @@
       <li><a href="../ranking/overall.html" class="mobile-nav-link">🏆 2026综合实力天梯榜</a></li>
       <li><a href="../ranking/value.html" class="mobile-nav-link">📊 性价比排行榜 (算清每GB单价)</a></li>
       <li><a href="../compare/index.html" class="mobile-nav-link">⚖️ 机场参数在线横向对比</a></li>
-      <li><a href="../guides/windows.html" class="mobile-nav-link">💻 客户端配置极速教程 (Win/Mac/iOS/安卓)</a></li>
-      <li><a href="../blog/how-to-choose-airport-in-2026.html" class="mobile-nav-link">📖 避坑指南与深度科普</a></li>
+      <li><a href="../guides/index.html" class="mobile-nav-link">💻 客户端配置全教程 (30篇)</a></li>
+      <li><a href="../blog/index.html" class="mobile-nav-link">📖 避坑指南与深度科普 (100篇)</a></li>
       <li><a href="../editorial-policy.html" class="mobile-nav-link">🛡️ 编辑政策与评测依据</a></li>
     </ul>
   </div>
@@ -77,7 +77,7 @@
   
       <nav class="breadcrumb container" aria-label="面包屑导航">
         <a href="../index.html">首页</a>
-        <span class="breadcrumb-separator">/</span><a href="../guides/windows.html">使用教程</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current">macOS系统Clash Verge Rev与Surge极简配置指南</span>
+        <span class="breadcrumb-separator">/</span><a href="../guides/index.html">使用教程</a><span class="breadcrumb-separator">/</span><span class="breadcrumb-current">macOS系统Clash Ver</span>
       </nav>
     
 
@@ -86,25 +86,38 @@
     
       <div class="container" style="padding-top: 1.5rem; padding-bottom: 3.5rem;">
         <header class="article-header">
-          <span class="badge badge-green" style="margin-bottom: 0.5rem;">💻 跨平台教程</span>
+          <span class="badge badge-green" style="margin-bottom: 0.5rem;">🍎 macOS</span>
           <h1 class="article-title">macOS系统Clash Verge Rev与Surge极简配置指南</h1>
           <div class="article-meta">
             <span>📅 最新适配版本: 2026年稳定版</span>
             <span>⏱️ 阅读时间: 约 5 分钟</span>
             <span>🔰 难度等级: 新手入门级</span>
+            <span>💻 目标平台: macOS</span>
           </div>
         </header>
 
         <div class="article-container article-body">
           
-        <div class="callout">
-          <div class="callout-title">🍎 Mac 用户的优雅选择</div>
-          <p>在 macOS 上，<strong>Clash Verge Rev</strong> 提供了绝佳的视觉体验与对 Apple Silicon 芯片的原生低功耗支持。</p>
-        </div>
+      <div class="callout">
+        <div class="callout-title">🍎 Mac 用户的优雅选择</div>
+        <p>在 macOS 上，<strong>Clash Verge Rev</strong> 提供了绝佳的视觉体验与对 Apple Silicon (M1/M2/M3/M4) 芯片的原生低功耗支持。</p>
+      </div>
 
-        <h2>一、下载与权限安装</h2>
-        <p>Apple Silicon (M1/M2/M3/M4) 用户下载带 <code>aarch64.dmg</code> 的安装包；Intel 机型下载 <code>x64.dmg</code> 安装包。拖动软件至应用程序文件夹中打开即可。</p>
-      
+      <h2>一、下载与权限安装</h2>
+      <p>Apple Silicon (M系列) 用户下载 <code>aarch64.dmg</code> 安装包；Intel 机型下载 <code>x64.dmg</code>。拖动至 Applications 文件夹即可。</p>
+
+      <h2>二、导入配置与开启增强模式</h2>
+      <ol>
+        <li>在“配置”中粘贴订阅链接并下载激活；</li>
+        <li>在“设置”中勾选“系统代理”；</li>
+        <li>建议开启 <strong>TUN 模式</strong>，Mac 即可接管所有终端及 Docker 流量。</li>
+      </ol>
+
+      <h2>三、终端 Terminal 命令行代理配置</h2>
+      <p>在 <code>~/.zshrc</code> 中加入以下命令，即可随时让终端加速：</p>
+      <pre><code>alias proxy="export http_proxy=http://127.0.0.1:7897 https_proxy=http://127.0.0.1:7897"
+alias unproxy="unset http_proxy https_proxy"</code></pre>
+    
 
           <div style="margin-top: 3rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);">
             <h3 style="margin-bottom: 0.5rem;">还没有好用的机场节点？</h3>
@@ -115,6 +128,7 @@
               <a href="../recommend/budget.html" class="btn btn-primary btn-sm">查看低预算平价机场</a>
               <a href="../recommend/premium.html" class="btn btn-secondary btn-sm">查看高端IPLC专线</a>
               <a href="../ranking/overall.html" class="btn btn-outline btn-sm">查看2026综合天梯榜</a>
+              <a href="index.html" class="btn btn-outline btn-sm">查看全部 30 篇教程 &rarr;</a>
             </div>
           </div>
         </div>
@@ -160,12 +174,12 @@
         <div class="footer-col">
           <h4>新手教程与科普</h4>
           <ul class="footer-links">
+            <li><a href="../guides/index.html">使用教程中心 (30篇)</a></li>
+            <li><a href="../blog/index.html">选购指南大全 (100篇)</a></li>
             <li><a href="../guides/windows.html">Windows Clash教程</a></li>
-            <li><a href="../guides/android.html">Android 安卓配置教程</a></li>
-            <li><a href="../guides/ios.html">iOS 小火箭使用教程</a></li>
+            <li><a href="../guides/android.html">Android 安卓配置</a></li>
+            <li><a href="../guides/ios.html">iOS 小火箭教程</a></li>
             <li><a href="../guides/macos.html">macOS 配置教程</a></li>
-            <li><a href="../glossary/iplc-专线.html">什么是IPLC专线？</a></li>
-            <li><a href="../blog/iplc-vs-bgp-transit.html">线路类型深度解析</a></li>
           </ul>
         </div>
 

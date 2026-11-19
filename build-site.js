@@ -7,6 +7,8 @@
 const fs = require('fs');
 const path = require('path');
 const { airports } = require('./src/data/airports');
+const { allGuides } = require('./src/data/allGuides');
+const { allArticles } = require('./src/data/allArticles');
 
 const DOMAIN = 'gpttizihelper.top';
 const SITE_URL = 'https://gpttizihelper.top';
@@ -104,8 +106,8 @@ function renderHtmlPage({
         <a href="${prefix}recommend/budget.html" class="nav-link ${activeNav === 'recommend' ? 'active' : ''}">机场推荐</a>
         <a href="${prefix}ranking/overall.html" class="nav-link ${activeNav === 'ranking' ? 'active' : ''}">机场排行</a>
         <a href="${prefix}compare/index.html" class="nav-link ${activeNav === 'compare' ? 'active' : ''}">机场对比</a>
-        <a href="${prefix}guides/windows.html" class="nav-link ${activeNav === 'guides' ? 'active' : ''}">使用教程</a>
-        <a href="${prefix}blog/how-to-choose-airport-in-2026.html" class="nav-link ${activeNav === 'blog' ? 'active' : ''}">选购指南</a>
+        <a href="${prefix}guides/index.html" class="nav-link ${activeNav === 'guides' ? 'active' : ''}">使用教程</a>
+        <a href="${prefix}blog/index.html" class="nav-link ${activeNav === 'blog' ? 'active' : ''}">选购指南</a>
         <a href="${prefix}glossary/iplc-专线.html" class="nav-link ${activeNav === 'glossary' ? 'active' : ''}">术语百科</a>
       </nav>
 
@@ -129,8 +131,8 @@ function renderHtmlPage({
       <li><a href="${prefix}ranking/overall.html" class="mobile-nav-link">🏆 2026综合实力天梯榜</a></li>
       <li><a href="${prefix}ranking/value.html" class="mobile-nav-link">📊 性价比排行榜 (算清每GB单价)</a></li>
       <li><a href="${prefix}compare/index.html" class="mobile-nav-link">⚖️ 机场参数在线横向对比</a></li>
-      <li><a href="${prefix}guides/windows.html" class="mobile-nav-link">💻 客户端配置极速教程 (Win/Mac/iOS/安卓)</a></li>
-      <li><a href="${prefix}blog/how-to-choose-airport-in-2026.html" class="mobile-nav-link">📖 避坑指南与深度科普</a></li>
+      <li><a href="${prefix}guides/index.html" class="mobile-nav-link">💻 客户端配置全教程 (30篇)</a></li>
+      <li><a href="${prefix}blog/index.html" class="mobile-nav-link">📖 避坑指南与深度科普 (100篇)</a></li>
       <li><a href="${prefix}editorial-policy.html" class="mobile-nav-link">🛡️ 编辑政策与评测依据</a></li>
     </ul>
   </div>
@@ -180,12 +182,12 @@ function renderHtmlPage({
         <div class="footer-col">
           <h4>新手教程与科普</h4>
           <ul class="footer-links">
+            <li><a href="${prefix}guides/index.html">使用教程中心 (30篇)</a></li>
+            <li><a href="${prefix}blog/index.html">选购指南大全 (100篇)</a></li>
             <li><a href="${prefix}guides/windows.html">Windows Clash教程</a></li>
-            <li><a href="${prefix}guides/android.html">Android 安卓配置教程</a></li>
-            <li><a href="${prefix}guides/ios.html">iOS 小火箭使用教程</a></li>
+            <li><a href="${prefix}guides/android.html">Android 安卓配置</a></li>
+            <li><a href="${prefix}guides/ios.html">iOS 小火箭教程</a></li>
             <li><a href="${prefix}guides/macos.html">macOS 配置教程</a></li>
-            <li><a href="${prefix}glossary/iplc-专线.html">什么是IPLC专线？</a></li>
-            <li><a href="${prefix}blog/iplc-vs-bgp-transit.html">线路类型深度解析</a></li>
           </ul>
         </div>
 
@@ -275,7 +277,7 @@ function generateIndex() {
           <a href="recommend/budget.html" class="btn btn-primary">💰 薅羊毛·白菜价平价推荐</a>
           <a href="ranking/overall.html" class="btn btn-secondary">🏆 2026封神榜·综合天梯</a>
           <a href="compare/index.html" class="btn btn-outline">⚖️ 14家拉出来溜溜·在线PK</a>
-          <a href="guides/windows.html" class="btn btn-secondary">💻 小白救命·5分钟极速上手</a>
+          <a href="guides/index.html" class="btn btn-secondary">💻 小白救命·全套使用教程 (30篇)</a>
         </div>
 
         <div class="hero-stats">
@@ -556,7 +558,7 @@ function generateIndex() {
             <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">💻 跨平台客户端上手教程中心</h2>
             <p style="color: var(--text-subtle); font-size: 0.95rem; margin-top: 0.25rem;">涵盖主流客户端下载、一键订阅导入、分流规则配置与常见排错指南</p>
           </div>
-          <a href="guides/windows.html" style="font-weight: 600; font-size: 0.9rem;">查看全部教程 &rarr;</a>
+          <a href="guides/index.html" style="font-weight: 600; font-size: 0.9rem;">查看全部 30 篇完整教程 &rarr;</a>
         </div>
 
         <div class="cards-grid">
@@ -656,7 +658,7 @@ function generateIndex() {
             <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">📰 选购避坑与进阶分析指南</h2>
             <p style="color: var(--text-subtle); font-size: 0.95rem; margin-top: 0.25rem;">提供独立客观的深度行业洞察，助您成为精明的梯子使用者</p>
           </div>
-          <a href="blog/how-to-choose-airport-in-2026.html" style="font-weight: 600; font-size: 0.9rem;">查看全部文章 &rarr;</a>
+          <a href="blog/index.html" style="font-weight: 600; font-size: 0.9rem;">查看全部 100 篇选购指南 &rarr;</a>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -1532,122 +1534,21 @@ function generateCompare() {
 }
 
 // =============================================================================
-// 6. 生成四大新手教程 (guides/)
+// 6. 生成全平台新手与进阶教程大全 (guides/ - 共 30 篇 + index.html)
 // =============================================================================
 
 function generateGuides() {
-  const guides = [
-    {
-      slug: "windows",
-      title: "Windows系统Clash Verge Rev与v2rayN上手教程 - 梯子节点导入指南",
-      h1: "Windows系统Clash Verge Rev与v2rayN极速上手指南",
-      keywords: "Windows Clash教程, Clash Verge Rev, v2rayN教程, 机场节点, 梯子推荐, 翻墙教程",
-      desc: "Windows电脑科学上网最全新手教程：图文详解 Clash Verge Rev 与 v2rayN 客户端下载、订阅链接导入、系统代理开启、TUN模式及常见连不上排错全流程。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">💡 Windows 平台首选客户端推荐</div>
-          <p>推荐首选 <strong>Clash Verge Rev</strong>（基于开源内核、界面现代美观、支持原生TUN虚拟网卡），其次为经典的 <strong>v2rayN</strong>（老牌稳定、协议兼容极广）。</p>
-        </div>
-
-        <h2>第一步：下载并安装客户端</h2>
-        <p>为确保安全，请务必从官方 GitHub Release 页面下载正版安装包：</p>
-        <ul>
-          <li><strong>Clash Verge Rev</strong>：下载 <code>Clash.Verge_x64-setup.exe</code> 并在电脑上常规安装；</li>
-          <li><strong>v2rayN</strong>：下载带 <code>Core</code> 的压缩包解压即用。</li>
-        </ul>
-
-        <h2>第二步：获取并导入机场订阅链接</h2>
-        <p>登录你所购买的<strong>机场推荐</strong>后台（如微风网络、隐形人、飞V等），进入“仪表盘”或“用户中心”：</p>
-        <ol>
-          <li>找到“快捷导入”或“复制订阅链接”按钮，复制专属订阅地址；</li>
-          <li>打开 Clash Verge Rev，点击左侧菜单栏的 <strong>Profiles（配置）</strong>；</li>
-          <li>在顶部输入框粘贴刚才复制的订阅链接，点击 <strong>Import（导入）</strong>；</li>
-          <li>导入成功后，鼠标单击选中该配置项（呈现高亮激活状态）。</li>
-        </ol>
-
-        <h2>第三步：选择节点并开启系统代理</h2>
-        <ol>
-          <li>点击左侧的 <strong>Proxies（代理）</strong> 菜单，选择代理模式为 <strong>Rule（规则分流）</strong>；</li>
-          <li>挑选一个延迟较低的节点（如香港、日本）；</li>
-          <li>回到 <strong>Settings（设置）</strong> 界面，将 <strong>System Proxy（系统代理）</strong> 开关打开；</li>
-          <li>此时打开浏览器，访问 <code>google.com</code> 或 <code>youtube.com</code> 即可秒开！</li>
-        </ol>
-      `
-    },
-    {
-      slug: "android",
-      title: "Android安卓手机Clash Meta与Sing-box使用教程 - 节点配置新手指南",
-      h1: "Android系统Clash Meta与Sing-box订阅配置新手教程",
-      keywords: "安卓Clash教程, Android翻墙, Clash Meta for Android, Sing-box, 机场节点",
-      desc: "Android手机科学上网超详细教程：手把手教你安装 Clash Meta / Sing-box，导入机场订阅，排除耗电杀后台，配置分流绕过大陆局域网应用。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">💡 安卓首选客户端</div>
-          <p>目前安卓平台最稳定强大的客户端为 <strong>Clash Meta for Android (CMFA)</strong> 与 <strong>Sing-box</strong>。对 VLESS、Trojan 等新协议支持极佳。</p>
-        </div>
-
-        <h2>一、安装与权限设置</h2>
-        <p>从官方渠道下载 <code>.apk</code> 文件安装后，初次启动时安卓系统会弹出“创建 VPN 连接请求”提示框，必须点击<strong>确定/允许</strong>，否则客户端无法接管网络流量。</p>
-
-        <h2>二、配置订阅链接</h2>
-        <ol>
-          <li>进入机场后台，复制“Clash订阅”链接；</li>
-          <li>打开 Clash Meta，点击 <strong>配置 (Profiles)</strong> &rarr; 点击右上角 <strong>+号</strong> &rarr; 选择 <strong>从 URL 导入</strong>；</li>
-          <li>名称随意填写，在 URL 栏粘贴刚才复制的订阅链接；</li>
-          <li>点击右上角保存图标，等待节点列表下载完毕并选中该配置。</li>
-        </ol>
-      `
-    },
-    {
-      slug: "ios",
-      title: "iOS苹果手机Shadowrocket小火箭订阅与使用教程 - 节点安装指南",
-      h1: "iOS苹果系统Shadowrocket与Surge安装配置教程",
-      keywords: "iOS小火箭教程, Shadowrocket教程, 苹果翻墙, 机场节点, 梯子推荐, Surge配置",
-      desc: "针对 iPhone 与 iPad 用户的苹果科学上网指南：美区 Apple ID 获取方法、Shadowrocket（小火箭）安装、扫码添加机场节点、分流规则设置详解。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">🍏 苹果用户的核心前置条件</div>
-          <p>由于中国大陆 App Store 政策限制，所有科学上网客户端（Shadowrocket、Loon、Surge）均未在国区上架。你需要准备一个<strong>非国区（如美区、日区、港区）的 Apple ID</strong> 进行下载。</p>
-        </div>
-
-        <h2>第一步：获取美区 Apple ID 与下载小火箭</h2>
-        <ol>
-          <li>登录美区 Apple ID，在 App Store 搜索 <strong>Shadowrocket</strong> 并下载；</li>
-          <li>下载完成后立即退回自己的常用国区账号。</li>
-        </ol>
-
-        <h2>第二步：添加机场订阅</h2>
-        <p>在手机 Safari 浏览器中登录你的机场后台，点击“一键导入 Shadowrocket”，系统会自动唤醒小火箭并完成添加，随后开启顶部开关即可。</p>
-      `
-    },
-    {
-      slug: "macos",
-      title: "macOS苹果电脑Clash Verge Rev与Surge配置教程 - Mac翻墙指南",
-      h1: "macOS系统Clash Verge Rev与Surge极简配置指南",
-      keywords: "Mac翻墙教程, macOS Clash, Clash Verge Rev Mac, Surge配置, 苹果电脑梯子",
-      desc: "专为 Mac 用户撰写的配置指南：原生适配 M1/M2/M3/M4 芯片与 Intel 架构的 Clash Verge Rev 安装、终端代理环境变量配置及增强模式开启。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">🍎 Mac 用户的优雅选择</div>
-          <p>在 macOS 上，<strong>Clash Verge Rev</strong> 提供了绝佳的视觉体验与对 Apple Silicon 芯片的原生低功耗支持。</p>
-        </div>
-
-        <h2>一、下载与权限安装</h2>
-        <p>Apple Silicon (M1/M2/M3/M4) 用户下载带 <code>aarch64.dmg</code> 的安装包；Intel 机型下载 <code>x64.dmg</code> 安装包。拖动软件至应用程序文件夹中打开即可。</p>
-      `
-    }
-  ];
-
-  guides.forEach(g => {
+  allGuides.forEach(g => {
     const contentHtml = `
       <div class="container" style="padding-top: 1.5rem; padding-bottom: 3.5rem;">
         <header class="article-header">
-          <span class="badge badge-green" style="margin-bottom: 0.5rem;">💻 跨平台教程</span>
+          <span class="badge badge-green" style="margin-bottom: 0.5rem;">${g.platformBadge || '💻 跨平台教程'}</span>
           <h1 class="article-title">${g.h1}</h1>
           <div class="article-meta">
             <span>📅 最新适配版本: 2026年稳定版</span>
             <span>⏱️ 阅读时间: 约 5 分钟</span>
             <span>🔰 难度等级: 新手入门级</span>
+            <span>💻 目标平台: ${g.platform}</span>
           </div>
         </header>
 
@@ -1663,6 +1564,7 @@ function generateGuides() {
               <a href="../recommend/budget.html" class="btn btn-primary btn-sm">查看低预算平价机场</a>
               <a href="../recommend/premium.html" class="btn btn-secondary btn-sm">查看高端IPLC专线</a>
               <a href="../ranking/overall.html" class="btn btn-outline btn-sm">查看2026综合天梯榜</a>
+              <a href="index.html" class="btn btn-outline btn-sm">查看全部 30 篇教程 &rarr;</a>
             </div>
           </div>
         </div>
@@ -1677,135 +1579,123 @@ function generateGuides() {
       depth: 1,
       activeNav: "guides",
       breadcrumbs: [
-        { name: "使用教程", path: "guides/windows.html" },
-        { name: g.h1.split('极速')[0].split('新手')[0], path: `guides/${g.slug}.html` }
+        { name: "使用教程", path: "guides/index.html" },
+        { name: g.h1.slice(0, 16), path: `guides/${g.slug}.html` }
       ],
       contentHtml
     });
 
     outputHtml(`guides/${g.slug}.html`, html);
   });
+
+  // 生成 guides/index.html 教程中心大全
+  const guideCategories = [
+    { pName: "Windows", id: "windows", icon: "💻", title: "Windows 电脑平台完整教程 (8篇)", list: allGuides.filter(g => g.platform === "Windows") },
+    { pName: "Android", id: "android", icon: "📱", title: "Android 安卓手机客户端教程 (6篇)", list: allGuides.filter(g => g.platform === "Android") },
+    { pName: "iOS", id: "ios", icon: "🍏", title: "iOS 苹果设备教程 (6篇)", list: allGuides.filter(g => g.platform === "iOS") },
+    { pName: "macOS", id: "macos", icon: "🍎", title: "macOS 苹果电脑教程 (4篇)", list: allGuides.filter(g => g.platform === "macOS") },
+    { pName: "软路由与网关", id: "router", icon: "🌐", title: "软路由与局域网透明网关教程 (3篇)", list: allGuides.filter(g => g.platform === "软路由与网关") },
+    { pName: "电视与特殊终端", id: "special", icon: "📺", title: "智能电视与特殊设备教程 (3篇)", list: allGuides.filter(g => g.platform === "电视与特殊终端") }
+  ];
+
+  const indexContentHtml = `
+    <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+      <header class="article-header" style="text-align: center; max-width: 860px; margin: 0 auto 3rem;">
+        <span class="badge badge-green" style="margin-bottom: 0.5rem;">💻 全平台覆盖 · 共 30 篇教程</span>
+        <h1 class="article-title" style="font-size: 2.25rem; font-weight: 900;">科学上网全平台客户端配置与使用教程中心</h1>
+        <p style="color: var(--text-subtle); font-size: 1.05rem; margin-top: 0.75rem; line-height: 1.6;">
+          无论您使用的是 Windows 电脑、MacBook、iPhone、安卓手机、软路由还是 Apple TV 电视盒子，这里提供经过编辑部实操验证的 30 篇保姆级图文教程。
+        </p>
+      </header>
+
+      <!-- 快速跳转锚点 -->
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem;">
+        <a href="#windows" class="btn btn-outline btn-sm">💻 Windows (8篇)</a>
+        <a href="#android" class="btn btn-outline btn-sm">📱 Android (6篇)</a>
+        <a href="#ios" class="btn btn-outline btn-sm">🍏 iOS (6篇)</a>
+        <a href="#macos" class="btn btn-outline btn-sm">🍎 macOS (4篇)</a>
+        <a href="#router" class="btn btn-outline btn-sm">🌐 软路由 (3篇)</a>
+        <a href="#special" class="btn btn-outline btn-sm">📺 电视终端 (3篇)</a>
+      </div>
+
+      <!-- 教程分类列表 -->
+      <div style="display: flex; flex-direction: column; gap: 3.5rem;">
+        ${guideCategories.map(cat => `
+          <section id="${cat.id}">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border);">
+              <span style="font-size: 1.75rem;">${cat.icon}</span>
+              <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0;">${cat.title}</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+              ${cat.list.map(item => `
+                <article class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="badge badge-green" style="margin-bottom: 0.5rem;">${item.platformBadge}</span>
+                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.4;">
+                      <a href="${item.slug}.html">${item.h1}</a>
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+                      ${item.desc.slice(0, 95)}...
+                    </p>
+                  </div>
+                  <div>
+                    <a href="${item.slug}.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">阅读完整教程 &rarr;</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </section>
+        `).join('')}
+      </div>
+
+      <!-- 底部推荐 -->
+      <div style="margin-top: 4rem; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); text-align: center;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">准备好开启科学上网了吗？</h3>
+        <p style="color: var(--text-subtle); max-width: 600px; margin: 0 auto 1.5rem;">
+          有了趁手的客户端软件，搭配一条高品质、晚高峰不卡顿的专线梯子，才能尽享 4K 秒开与 ChatGPT 丝滑对话。
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="../ranking/overall.html" class="btn btn-primary">查看 2026 综合天梯榜</a>
+          <a href="../compare/index.html" class="btn btn-secondary">14 大品牌横向对比</a>
+          <a href="../blog/index.html" class="btn btn-outline">浏览 100 篇选购指南</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const indexHtml = renderHtmlPage({
+    title: "2026科学上网客户端配置与使用教程中心 - Win/Mac/iOS/安卓/软路由全平台",
+    description: "30篇保姆级科学上网图文教程：全面覆盖 Windows、macOS、iOS 苹果手机、Android 安卓、OpenWrt 软路由、Apple TV 及外服主机游戏加速配置全流程。",
+    keywords: "科学上网教程, Clash教程, 小火箭教程, v2rayN教程, 软路由翻墙, 苹果电脑翻墙, 机场节点配置",
+    canonicalPath: "guides/index.html",
+    depth: 1,
+    activeNav: "guides",
+    breadcrumbs: [
+      { name: "使用教程", path: "guides/index.html" }
+    ],
+    contentHtml: indexContentHtml
+  });
+
+  outputHtml("guides/index.html", indexHtml);
 }
 
 // =============================================================================
-// 7. 生成五大核心选购指南与深度文章 (blog/)
+// 7. 生成深度博文与选购避坑指南 (blog/ - 共 100 篇 + index.html)
 // =============================================================================
 
 function generateBlogs() {
-  const blogs = [
-    {
-      slug: "how-to-choose-airport-in-2026",
-      title: "2026新手如何挑选靠谱机场？防跑路与避坑全攻略",
-      h1: "2026新手挑选靠谱机场与翻墙VPN防跑路全攻略",
-      keywords: "机场推荐, 梯子推荐, 防跑路, 性价比机场, vpn选购指南",
-      desc: "2026年最新科学上网防坑宝典：从服务商运营年限、机房线路、年付陷阱到虚假测速图造假，教你避开99%的机场跑路陷阱，选出真正靠谱的梯子。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">核心提醒</div>
-          <p>科学上网行业受网络管制与成本制约极大。遵循合理的选购策略才能最大限度保护自身财产安全与网络畅通。</p>
-        </div>
-
-        <h2>一、识别“高危跑路机场”的五大典型特征</h2>
-        <ol>
-          <li><strong>夸张的超低价年付大甩卖</strong>：“9.9包年1000G”，基本都是圈钱跑路前兆；</li>
-          <li><strong>没有官方活跃的交流群或全员禁言</strong>：说明技术运维缺位；</li>
-          <li><strong>全网清一色的“千兆跑满”测速截图</strong>：不良测评博主专门在闲时拿独立节点截图；</li>
-          <li><strong>不支持月付</strong>：强制要求大额长期起购。</li>
-        </ol>
-
-        <h2>二、挑选长久稳定机场的核心黄金法则</h2>
-        <p>1. <strong>坚持首购月付体验</strong>：满意后再考虑较长周期；<br>
-        2. <strong>主力与备用双持策略</strong>：例如主力选择<strong>隐形人或微风网络</strong>，备用搭配<strong>飞V（¥29永久200GB）</strong>。</p>
-      `
-    },
-    {
-      slug: "iplc-vs-bgp-transit",
-      title: "深入解析直连、BGP中继与IPLC/IEPL内网专线的核心差异",
-      h1: "深入解析直连、BGP中继与IPLC/IEPL内网专线的核心差异",
-      keywords: "IPLC专线, IEPL专线, BGP中转, 机场节点, 线路区别, 梯子推荐",
-      desc: "从物理网络拓扑、GFW审查机制、晚高峰时延与成本四个维度深度解构直连节点、BGP中继与IPLC内网专线，解答为什么专线机场更稳定的核心疑问。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">架构定生死</div>
-          <p>决定一个梯子好坏的，从来不是花哨的客户端，而是其底层的网络拓扑架构。</p>
-        </div>
-
-        <h2>1. 直连线路（Direct Connection）：成本最低，极易被封</h2>
-        <p>流量直接通过公网跨境访问，敏感时期极易被 GFW 阻断，晚高峰丢包严重。</p>
-
-        <h2>2. BGP 隧道中继（BGP Transit）：性价比中流砥柱</h2>
-        <p>国内多线入口机房加密中转，三网延迟均衡，抗封锁能力较强。</p>
-
-        <h2>3. IPLC 与 IEPL 企业内网专线：顶级体验的终极形态</h2>
-        <p>租用跨国内网物理光纤，不经过 GFW 公网防火墙，晚高峰丢包率低于 0.2%，代表品牌为<strong>隐形人、闪跃、无忧</strong>。</p>
-      `
-    },
-    {
-      slug: "airport-protocols-clash-singbox",
-      title: "常见翻墙协议全对比：Shadowsocks、Trojan、Vless与Hysteria2",
-      h1: "常见翻墙协议全对比：Shadowsocks、Trojan、Vless与Hysteria2",
-      keywords: "翻墙协议, Shadowsocks, Trojan, Vless, Hysteria2, 机场节点",
-      desc: "2026年最新代理协议技术剖析：Shadowsocks、Trojan、Vless 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">协议演进</div>
-          <p>协议的发展始终是与防火墙深度包检测技术的博弈过程。</p>
-        </div>
-
-        <h2>主流协议特性分析</h2>
-        <ul>
-          <li><strong>VLESS</strong>：轻量高效，去除了冗余加密特征，微风网络、暮光网络、隐形人均深度支持；</li>
-          <li><strong>Shadowsocks</strong>：经典协议，搭配 IPLC 专线使用效果极佳；</li>
-          <li><strong>Trojan</strong>：完美伪装为标准 HTTPS 流量，稳定防封锁。</li>
-        </ul>
-      `
-    },
-    {
-      slug: "how-to-unblock-chatgpt-claude",
-      title: "如何解决ChatGPT与Claude地区限制与Access Denied报错",
-      h1: "如何解决ChatGPT与Claude地区限制与Access Denied报错",
-      keywords: "ChatGPT报错, Claude地区限制, Access Denied, 原生IP, AI节点, 梯子推荐",
-      desc: "彻底解决访问 OpenAI 与 Claude 时的 Access Denied、Error 1020、Not Available in Your Country 报错。从节点IP纯净度检测到浏览器分流配置一站式解决。",
-      content: `
-        <div class="callout callout-warning">
-          <div class="callout-title">⚠️ 频繁报错可能导致封号</div>
-          <p>OpenAI 与 Anthropic 对异常数据中心 IP 实行高强度风控审查。</p>
-        </div>
-
-        <h2>排错与解决步骤</h2>
-        <p>1. <strong>挑选具备原生住宅/商业IP的专线节点</strong>（推荐<strong>灵猫与隐形人</strong>）；<br>
-        2. 清理浏览器 LocalStorage 历史缓存；<br>
-        3. 开启客户端的域名分流规则，确保 OpenAI 始终走纯净节点。</p>
-      `
-    },
-    {
-      slug: "streaming-4k-unlock-guide",
-      title: "4K流媒体跨区解锁全攻略：Netflix、Disney+与YouTube Premium",
-      h1: "4K流媒体跨区解锁全攻略：Netflix、Disney+与YouTube Premium",
-      keywords: "Netflix解锁, 4K流媒体, Disney+, 跨区追剧, 梯子推荐, 机场节点",
-      desc: "影音发烧友必备：详解 Netflix 各区片源差异、原生IP解锁机制、合租账号防封车技巧及电视TV端（Apple TV / Android TV）代理配置指南。",
-      content: `
-        <div class="callout">
-          <div class="callout-title">真正的全解锁</div>
-          <p>只有能够搜索并播放非自制独占版权剧，才是真正的原生流媒体全解锁。</p>
-        </div>
-
-        <h2>影音节点首选</h2>
-        <p>选择<strong>灵猫、闪跃 FlashLeap、微风网络</strong>，全节点支持 4K 杜比视界高码率播放不降频。</p>
-      `
-    }
-  ];
-
-  blogs.forEach(b => {
+  allArticles.forEach(b => {
     const contentHtml = `
       <div class="container" style="padding-top: 1.5rem; padding-bottom: 3.5rem;">
         <header class="article-header">
-          <span class="badge badge-blue" style="margin-bottom: 0.5rem;">📖 深度分析</span>
+          <span class="badge badge-blue" style="margin-bottom: 0.5rem;">${b.categoryBadge || '📖 深度文章'}</span>
           <h1 class="article-title">${b.h1}</h1>
           <div class="article-meta">
             <span>📅 发布日期: 2026-11-01</span>
             <span>🔄 最近修订: ${CURRENT_DATE}</span>
             <span>✍️ 撰写团队: GPT梯子助手编辑部</span>
+            <span>🏷️ 专题分类: ${b.category}</span>
           </div>
         </header>
 
@@ -1821,6 +1711,7 @@ function generateBlogs() {
               <a href="../ranking/overall.html" class="btn btn-primary btn-sm">2026综合实力天梯榜</a>
               <a href="../recommend/stable.html" class="btn btn-secondary btn-sm">稳定防断联专线推荐</a>
               <a href="../compare/index.html" class="btn btn-outline btn-sm">机场参数在线对比</a>
+              <a href="index.html" class="btn btn-outline btn-sm">返回全部 100 篇指南 &rarr;</a>
             </div>
           </div>
         </div>
@@ -1835,7 +1726,7 @@ function generateBlogs() {
       depth: 1,
       activeNav: "blog",
       breadcrumbs: [
-        { name: "选购指南", path: "blog/how-to-choose-airport-in-2026.html" },
+        { name: "选购指南", path: "blog/index.html" },
         { name: b.h1.slice(0, 16), path: `blog/${b.slug}.html` }
       ],
       contentHtml
@@ -1843,6 +1734,142 @@ function generateBlogs() {
 
     outputHtml(`blog/${b.slug}.html`, html);
   });
+
+  // 生成 blog/index.html 博客指南大全
+  const blogCats = [
+    { name: "选购指南", badge: "🛒 选购指南", count: allArticles.filter(a => a.category === "选购指南").length },
+    { name: "协议科普", badge: "⚡ 协议科普", count: allArticles.filter(a => a.category === "协议科普").length },
+    { name: "AI工具解锁", badge: "🤖 AI大模型", count: allArticles.filter(a => a.category === "AI工具解锁").length },
+    { name: "4K流媒体", badge: "🎬 4K流媒体", count: allArticles.filter(a => a.category === "4K流媒体").length },
+    { name: "跨境与外贸", badge: "💼 外贸与电商", count: allArticles.filter(a => a.category === "跨境与外贸").length },
+    { name: "安全与隐私", badge: "🛡️ 安全与隐私", count: allArticles.filter(a => a.category === "安全与隐私").length }
+  ];
+
+  const blogIndexContent = `
+    <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+      <header class="article-header" style="text-align: center; max-width: 860px; margin: 0 auto 3rem;">
+        <span class="badge badge-blue" style="margin-bottom: 0.5rem;">📖 深度知识库 · 共 100 篇文章</span>
+        <h1 class="article-title" style="font-size: 2.25rem; font-weight: 900;">科学上网避坑指南与深度技术博文大全</h1>
+        <p style="color: var(--text-subtle); font-size: 1.05rem; margin-top: 0.75rem; line-height: 1.6;">
+          汇集 100 篇经过实机测速与真实场景检验的原创深度长文，涵盖选购防坑、网络协议底层原理、ChatGPT与Claude大模型解锁、4K影音秒开以及涉外出海安全。
+        </p>
+      </header>
+
+      <!-- 分类标签过滤器 -->
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem;" id="blog-category-tabs">
+        <a href="#all" class="btn btn-primary btn-sm category-tab-btn active" data-cat="all">全部文章 (100)</a>
+        ${blogCats.map(c => `
+          <a href="#${c.name}" class="btn btn-outline btn-sm category-tab-btn" data-cat="${c.name}">${c.badge} (${c.count})</a>
+        `).join('')}
+      </div>
+
+      <!-- 搜索过滤输入框 -->
+      <div style="max-width: 600px; margin: 0 auto 3rem;">
+        <div class="search-input-wrap" style="box-shadow: var(--shadow-sm); border: 1px solid var(--border);">
+          <span style="font-size: 1.25rem;">🔍</span>
+          <input type="text" id="article-filter-input" class="search-input" placeholder="在 100 篇精选博文中搜索关键词（如：IPLC、ChatGPT、Netflix、防封...）">
+        </div>
+      </div>
+
+      <!-- 文章卡片网格 -->
+      <div id="articles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+        ${allArticles.map((art, idx) => `
+          <article class="card article-card-item" data-category="${art.category}" data-title="${art.h1.toLowerCase()}" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span class="badge badge-blue">${art.categoryBadge}</span>
+                <span style="font-size: 0.775rem; color: var(--text-subtle);">编号 #${idx + 1}</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; line-height: 1.4;">
+                <a href="${art.slug}.html">${art.h1}</a>
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                ${art.desc.slice(0, 110)}...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 0.75rem; margin-top: 0.5rem;">
+              <span style="font-size: 0.8rem; color: var(--text-subtle);">⏱️ 约 5~8 分钟阅读</span>
+              <a href="${art.slug}.html" style="font-size: 0.85rem; font-weight: 600; color: var(--primary);">阅读全文 &rarr;</a>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+
+      <div id="no-article-found" style="display: none; text-align: center; padding: 4rem 1rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">未找到与搜索词匹配的文章</h3>
+        <p style="color: var(--text-subtle);">请尝试缩短或更换搜索关键词，或点击上方分类标签重新筛选。</p>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const filterInput = document.getElementById('article-filter-input');
+          const tabBtns = document.querySelectorAll('.category-tab-btn');
+          const articleCards = document.querySelectorAll('.article-card-item');
+          const noResult = document.getElementById('no-article-found');
+
+          let activeCat = 'all';
+
+          function filterArticles() {
+            const query = filterInput ? filterInput.value.trim().toLowerCase() : '';
+            let visibleCount = 0;
+
+            articleCards.forEach(card => {
+              const cat = card.getAttribute('data-category');
+              const title = card.getAttribute('data-title') || '';
+              const matchCat = (activeCat === 'all' || cat === activeCat);
+              const matchQuery = (!query || title.includes(query));
+
+              if (matchCat && matchQuery) {
+                card.style.display = 'flex';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            });
+
+            if (noResult) {
+              noResult.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+          }
+
+          if (filterInput) {
+            filterInput.addEventListener('input', filterArticles);
+          }
+
+          tabBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              tabBtns.forEach(b => {
+                b.classList.remove('active', 'btn-primary');
+                b.classList.add('btn-outline');
+              });
+              this.classList.add('active', 'btn-primary');
+              this.classList.remove('btn-outline');
+
+              activeCat = this.getAttribute('data-cat') || 'all';
+              filterArticles();
+            });
+          });
+        });
+      </script>
+    </div>
+  `;
+
+  const indexHtml = renderHtmlPage({
+    title: "科学上网与翻墙选购指南大全 - 100篇深度避坑与技术科普文章",
+    description: "100篇原创深度文章：涵盖2026好用机场挑选、防跑路技巧、IPLC/IEPL线路解析、ChatGPT/Claude大模型解锁、4K流媒体秒开、跨境电商外贸通讯及网络隐私安全。",
+    keywords: "机场推荐, 梯子推荐, 翻墙教程, 性价比机场, ChatGPT解锁, 4K流媒体, 科学上网避坑, 专线科普",
+    canonicalPath: "blog/index.html",
+    depth: 1,
+    activeNav: "blog",
+    breadcrumbs: [
+      { name: "选购指南", path: "blog/index.html" }
+    ],
+    contentHtml: blogIndexContent
+  });
+
+  outputHtml("blog/index.html", indexHtml);
 }
 
 // =============================================================================
@@ -2114,15 +2141,10 @@ function generateSeoFiles() {
     'ranking/budget.html',
     'ranking/stable.html',
     'compare/index.html',
-    'guides/windows.html',
-    'guides/android.html',
-    'guides/ios.html',
-    'guides/macos.html',
-    'blog/how-to-choose-airport-in-2026.html',
-    'blog/iplc-vs-bgp-transit.html',
-    'blog/airport-protocols-clash-singbox.html',
-    'blog/how-to-unblock-chatgpt-claude.html',
-    'blog/streaming-4k-unlock-guide.html',
+    'guides/index.html',
+    ...allGuides.map(g => `guides/${g.slug}.html`),
+    'blog/index.html',
+    ...allArticles.map(b => `blog/${b.slug}.html`),
     'glossary/iplc-专线.html',
     'glossary/bgp-中转.html',
     'glossary/clash-verge.html',
