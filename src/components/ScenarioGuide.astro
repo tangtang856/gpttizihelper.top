@@ -1,0 +1,110 @@
+---
+const scenarios = [
+  {
+    icon: '💰',
+    title: '预算有限·学生党日常',
+    desc: '查资料、刷推特、偶看高清视频，追求极致性价比与低起步门槛',
+    recommend: '微风网络 (¥8/月 200GB) 或 飞V (¥4.9起)',
+    link: '/recommend/budget/',
+    badge: '月付 ¥4.9 起',
+  },
+  {
+    icon: '⚡',
+    title: '晚高峰 0 丢包·跨境外贸办公',
+    desc: 'Zoom跨国会议、远程桌面、高频收发邮件，拒绝晚高峰网络拥堵与频繁掉线',
+    recommend: '隐形人 (纯IEPL内网专线) 或 暮光网络',
+    link: '/recommend/stable/',
+    badge: '晚高峰丢包率 < 0.4%',
+  },
+  {
+    icon: '🤖',
+    title: '大模型生产力·ChatGPT/Claude',
+    desc: '告别 Access Denied 与机器人拦截，原生纯净商业/住宅 IP 稳定调用',
+    recommend: '灵猫 (全原生IP) 或 微风网络',
+    link: '/recommend/ai/',
+    badge: '100% 解锁大模型',
+  },
+  {
+    icon: '🎬',
+    title: '客厅大屏 4K HDR 追剧',
+    desc: 'Apple TV / Android TV / 电脑端观看 Netflix、Disney+、YouTube 4K',
+    recommend: '飞猫云 (专线原生调度) 或 萤火虫',
+    link: '/recommend/streaming/',
+    badge: '4K/8K 码率秒开',
+  },
+  {
+    icon: '🎮',
+    title: '外服联机·Steam/PS5游戏',
+    desc: '低 Ping 游戏专线，超低抖动与丢包，加速外服匹配与联机体验',
+    recommend: '闪跃 FlashLeap (亚太极速节点) 或 跨界',
+    link: '/recommend/premium/',
+    badge: '亚太延迟 < 45ms',
+  },
+  {
+    icon: '📦',
+    title: '轻度防失联·永久不限时备用',
+    desc: '平时用得少，不想每个月白扣月租，一次购买流量永久有效不清零',
+    recommend: '飞V (¥29 买断 200GB 永久有效)',
+    link: '/review/feiv/',
+    badge: '流量永不过期',
+  },
+];
+---
+
+<section class="py-12 bg-slate-100/70 border-b border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-2">
+          <span>🎯 对号入座·场景智能导购</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          你最常在什么场景使用梯子机场？
+        </h2>
+        <p class="text-slate-500 text-sm mt-1">
+          不同的业务场景对协议、IP纯净度与专线网络要求迥异，直达属于你的最佳方案
+        </p>
+      </div>
+      <a
+        href="/compare/"
+        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 group"
+      >
+        进入 14 家全维度对比工具
+        <span class="inline-block transition-transform group-hover:translate-x-1 ml-1">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {scenarios.map((s) => (
+        <a
+          href={s.link}
+          class="flex flex-col justify-between bg-white hover:bg-blue-50/30 rounded-2xl p-5 border border-slate-200 hover:border-blue-400 shadow-sm hover:shadow-md transition-all group"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-3xl p-2 bg-slate-50 rounded-xl border border-slate-100 group-hover:scale-110 transition-transform">
+                {s.icon}
+              </span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                {s.badge}
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              {s.title}
+            </h3>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+              {s.desc}
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="text-slate-400">推荐方案：</span>
+            <span class="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+              {s.recommend} &rarr;
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

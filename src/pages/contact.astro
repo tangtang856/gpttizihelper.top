@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "联系我们与问题反馈 - GPT梯子机场帮手";
+const desc = "GPT梯子机场帮手联系方式与报错通道。欢迎机场运营方提供真机测试节点，读者提交跑路预警或纠错建议。";
+---
+
+<Layout title={title} description={desc}>
+  <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl font-black text-slate-900 tracking-tight">联系帮手与反馈通道</h1>
+      <p class="text-slate-500 text-sm mt-2">随时欢迎读者纠错、跑路预警与技术交流</p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <h2 class="text-lg font-bold text-slate-900 mb-2">读者纠错与跑路预警</h2>
+        <p class="text-xs text-slate-500 leading-relaxed mb-4">
+          如果您购买的某家机场出现大面积断流、老板失联、频繁更换域名或资费虚假宣传，请立即向我们预警，我们将第一时间复核并在排行榜中亮红牌。
+        </p>
+        <div class="p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
+          反馈邮箱：support@gpttizihelper.top
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <h2 class="text-lg font-bold text-slate-900 mb-2">机场商家接入与测试申请</h2>
+        <p class="text-xs text-slate-500 leading-relaxed mb-4">
+          我们欢迎任何具备真实 IPLC/IEPL 专线资质的优质机场申请加入评测。请提供可供晚高峰真机压力测试的完整节点订阅，我们不接受无测试节点的空洞公关合作。
+        </p>
+        <div class="p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
+          商务沟通：business@gpttizihelper.top
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

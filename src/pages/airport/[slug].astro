@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { airports } from '../../data/airports';
+
+export function getStaticPaths() {
+  return airports.map((airport) => ({
+    params: { slug: airport.slug },
+    props: { airport },
+  }));
+}
+
+const { airport } = Astro.props;
+
+const title = `${airport.name} 节点线路架构与套餐参数档案 - GPT梯子机场帮手`;
+const desc = `${airport.name}节点分布、线路架构、支持协议与套餐流量参数明细。包含支持节点地区、设备限制、流媒体解锁能力及官方推广直达。`;
+---
+
+<Layout title={title} description={desc}>
+  <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
+        <a href="/" class="hover:text-blue-600">首页</a>
+        <span>/</span>
+        <a href="/ranking/overall/" class="hover:text-blue-600">机场档案</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">{airport.name}</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="inline-block text-xs font-bold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800 mb-2">
+            官方核验档案
+          </span>
+          <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            {airport.name} 核心技术参数与节点档案
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            {airport.description}
+          </p>
+        </div>
+
+        <div class="shrink-0">
+          <a
+            href={airport.affiliateUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm inline-block"
+          >
+            官网直达选购 &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <h2 class="text-base font-bold text-slate-900 mb-4">技术规格总览</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <span class="text-slate-400 block text-[10px]">支持协议</span>
+          <span class="font-bold text-slate-800">{airport.protocols.join(', ')}</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <span class="text-slate-400 block text-[10px]">覆盖地区</span>
+          <span class="font-bold text-slate-800">{airport.regions.join(', ')}</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <span class="text-slate-400 block text-[10px]">设备在线限制</span>
+          <span class="font-bold text-slate-800">{airport.deviceLimit}</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <span class="text-slate-400 block text-[10px]">起步可用流量</span>
+          <span class="font-bold text-blue-600">{airport.plans[0].trafficGb} GB</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <span class="text-slate-400 block text-[10px]">折算单GB成本</span>
+          <span class="font-bold text-emerald-600">{airport.plans[0].unitPricePerGb.toFixed(3)} 元</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl">
+          <span class="text-slate-400 block text-[10px]">核验状态</span>
+          <span class="font-bold text-slate-800">{airport.testStatus === 'tested' ? '真机实测通过' : '官方公开数据'}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between p-5 bg-blue-50 border border-blue-200 rounded-2xl">
+      <div>
+        <div class="font-bold text-sm text-blue-900">想看完整的晚高峰丢包压测与解锁分析？</div>
+        <div class="text-xs text-blue-700 mt-0.5">阅读编辑部发布的 {airport.name} 独立图文评测报告</div>
+      </div>
+      <a href={`/review/${airport.slug}/`} class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm whitespace-nowrap">
+        查看完整评测 &rarr;
+      </a>
+    </div>
+  </div>
+</Layout>

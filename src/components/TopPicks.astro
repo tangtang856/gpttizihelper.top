@@ -1,0 +1,140 @@
+---
+import { airports } from '../data/airports';
+
+// 精选 4 家最具有代表性的主力品牌（性价比王、晚高峰防封王、超值追剧王、极致轻量王）
+const topAirports = [
+  {
+    ...airports.find(a => a.id === 'breezenet')!,
+    tag: '💰 年度性价比之王',
+    tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    highlight: '¥8/月 标配 200GB 超大流量，IEPL内网专线抗封锁',
+  },
+  {
+    ...airports.find(a => a.id === 'yinxingren')!,
+    tag: '⚡ 晚高峰专线抗封王',
+    tagColor: 'bg-purple-50 text-purple-700 border-purple-200',
+    highlight: '全天候纯内网专线，晚高峰 0 丢包，企业与重度用户首选',
+  },
+  {
+    ...airports.find(a => a.id === 'feimaoyun')!,
+    tag: '🎬 4K追剧与新手免折腾',
+    tagColor: 'bg-blue-50 text-blue-700 border-blue-200',
+    highlight: '年付折算仅 ¥7/月，全节点原生 IP 智能解锁 Netflix/Disney+',
+  },
+  {
+    ...airports.find(a => a.id === 'muguang')!,
+    tag: '🛡️ 商务涉外高可用',
+    tagColor: 'bg-amber-50 text-amber-700 border-amber-200',
+    highlight: '双冗余混合调度，大带宽抗攻击，团队协作与稳定办公主力',
+  },
+];
+---
+
+<section class="py-12 bg-white border-y border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-2">
+          <span>🏆 帮手精选·闭眼入避坑指南</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          2026 年度编辑部精选 TOP 4 梯子推荐
+        </h2>
+        <p class="text-slate-500 text-sm mt-1">
+          告别同质化无意义比价，从 14 家真机实测数据中脱颖而出的 4 个差异化场景首选
+        </p>
+      </div>
+      <a
+        href="/ranking/overall/"
+        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 group"
+      >
+        查看 14 品牌完整综合天梯榜
+        <span class="inline-block transition-transform group-hover:translate-x-1 ml-1">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {topAirports.map((item) => (
+        <div class="flex flex-col justify-between bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-200 group">
+          <div>
+            <!-- Header Badge & Price -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class={`text-[11px] font-bold px-2.5 py-1 rounded-md border ${item.tagColor}`}>
+                {item.tag}
+              </span>
+              <div class="text-right">
+                <span class="text-xl font-black text-slate-900">¥{item.startingPrice}</span>
+                <span class="text-xs text-slate-500">/{item.plans[0].period}</span>
+              </div>
+            </div>
+
+            <!-- Title & Protocols -->
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              {item.name}
+            </h3>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+              {item.highlight}
+            </p>
+
+            <!-- Key Specs -->
+            <div class="grid grid-cols-2 gap-2 my-4 p-3 bg-white group-hover:bg-slate-50 rounded-xl border border-slate-200/80 text-xs">
+              <div>
+                <span class="text-slate-400 block text-[10px]">起步可用流量</span>
+                <span class="font-bold text-slate-800">{item.plans[0].trafficGb} GB</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">折算单价</span>
+                <span class="font-bold text-blue-600">{item.plans[0].unitPricePerGb.toFixed(3)} 元/GB</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">丢包实测</span>
+                <span class="font-bold text-emerald-600">&lt; 0.4%</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">设备支持</span>
+                <span class="font-bold text-slate-800">{item.deviceLimit.split('同时')[0]}</span>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-1.5 text-xs text-slate-600 mb-4">
+              {item.advantages.slice(0, 2).map((adv) => (
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-500 font-bold shrink-0">✓</span>
+                  <span>{adv}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Coupon & Action -->
+          <div class="pt-3 border-t border-slate-200/60">
+            {item.coupon && (
+              <div class="mb-3 px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-between text-xs text-amber-800">
+                <span>专属券码：</span>
+                <code class="font-mono font-bold text-amber-900">{item.coupon}</code>
+              </div>
+            )}
+            <div class="grid grid-cols-2 gap-2">
+              <a
+                href={`/review/${item.slug}/`}
+                class="text-center py-2 px-3 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-colors"
+              >
+                查看实测
+              </a>
+              <a
+                href={item.affiliateUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                class="text-center py-2 px-3 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors shadow-sm"
+              >
+                官网直达 &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

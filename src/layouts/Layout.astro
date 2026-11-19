@@ -1,0 +1,78 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical?: string;
+  ogType?: string;
+  schema?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  keywords = '机场推荐, 机场节点, 性价比机场, 梯子推荐, vpn, vpn机场, vpn节点, vpn推荐',
+  canonical = Astro.url.href,
+  ogType = 'website',
+  schema,
+} = Astro.props;
+
+const siteUrl = 'https://gpttizihelper.top';
+const currentUrl = Astro.url.href;
+
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'GPT梯子机场帮手',
+  url: siteUrl,
+  description: '2026专业中文机场与梯子科学上网推荐测评门户',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/compare/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Bing & Search Engine Verification -->
+    <meta name="msvalidate.01" content="8F4B5E67A91249B5812E9B01C1827439" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="GPT梯子机场帮手" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema || defaultSchema)} />
+  </head>
+  <body class="flex flex-col min-h-screen bg-slate-50 text-slate-900">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

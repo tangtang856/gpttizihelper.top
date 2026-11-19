@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const terms = [
+    {
+      slug: 'iplc',
+      name: 'IPLC 专线 (International Private Leased Circuit)',
+      title: '什么是 IPLC 专线？科学上网机场专线原理解析',
+      desc: '深入科普 IPLC 国际私有租用线路原理解析。为什么纯内网专线晚高峰零丢包、抗封锁能力极强？',
+      content: `
+        <h2>一、IPLC 专线基本定义</h2>
+        <p>IPLC（International Private Leased Circuit，国际私有租用线路）是指跨越国家或地区的点对点专属物理通信通道。与走普通互联网国际出口不同，IPLC 是由电信运营商铺设的专有海底光缆或陆地光缆直接互联。</p>
+        <h2>二、为什么科学上网推荐 IPLC 专线？</h2>
+        <ul>
+          <li><strong>不经过公网 GFW 审查节点：</strong>数据在境内机房接入后，直接在运营商内网封装通过内网光纤传输至境外机房（如香港、东京），因此不受公网封锁与干扰。</li>
+          <li><strong>晚高峰极低丢包率：</strong>公网国际出口在晚间 20:00-23:00 丢包率常达 15%~30%，而物理内网 IPLC 专线丢包率通常低于 0.4%。</li>
+          <li><strong>超低抖动与稳定低延时：</strong>深圳到香港内网专线延迟常年稳定在 4ms~7ms，是外服网游联机与大模型交互的基石。</li>
+        </ul>
+      `
+    },
+    {
+      slug: 'bgp',
+      name: 'BGP 中继与智能路由',
+      title: '什么是 BGP 中继？机场多线入口调度机制解析',
+      desc: 'BGP（边界网关协议）中继入口原理解析。如何实现移动、联通、电信三网用户智能接入最优机房？',
+      content: `
+        <h2>一、BGP 边界网关协议的作用</h2>
+        <p>BGP（Border Gateway Protocol）是互联网核心自治系统间的路由协议。在机场架构中，BGP 入口机房通常拥有中国电信、中国联通、中国移动三家主流运营商的物理直连网线。</p>
+        <h2>二、BGP 中继的优势</h2>
+        <p>当不同宽带用户发起请求时，BGP 路由器会自动根据各运营商当前的网内延迟与拥堵情况，将流量自动引导至该网络最快的服务器，避免“移动连电信慢、电信连联通卡”的跨网结算瓶颈。</p>
+      `
+    },
+    {
+      slug: 'native-ip',
+      name: '原生 IP 与机房广播 IP',
+      title: '原生 IP 与广播 IP 区别 - 为什么流媒体与 ChatGPT 需要原生 IP？',
+      desc: '详解原生商业/住宅 IP 与机房 IDC 广播 IP 的核心区别。为什么原生 IP 是避免 ChatGPT 封号与 Netflix 4K 解锁的关键？',
+      content: `
+        <h2>一、什么是原生 IP？</h2>
+        <p>原生 IP（Native IP）是指 IP 地址的注册机构（如 APNIC/ARIN）所登记的国家或地区，与机房服务器所在物理地理位置完全一致的 IP 地址。</p>
+        <h2>二、为什么流媒体与 ChatGPT 严重依赖原生 IP？</h2>
+        <p>Netflix、Disney+ 以及 OpenAI (ChatGPT) 部署了极其严格的商用风控数据库（如 MaxMind、IPinfo）。当系统检测到访问者使用的是数据中心云厂商（如 AWS、Linode、DigitalOcean）的广播机房 IP 时，会判定为机器人或代理服务，从而弹出 <code>Access Denied</code> 或限制只能观看自制剧。</p>
+      `
+    },
+    {
+      slug: 'vless',
+      name: 'VLESS 协议与 XTLS 原理',
+      title: 'VLESS 协议原理与优势 - 新一代轻量科学上网协议',
+      desc: 'V-2-Ray 社区推出的下一代无状态轻量级传输协议 VLESS 原理解析与性能对比。',
+      content: `
+        <h2>一、VLESS 的设计哲学</h2>
+        <p>VLESS 是一个无状态的轻量传输协议，相比于旧版 VMess，它去除了繁琐冗余的双重加密（在底层已具备 TLS 1.3 的情况下），从而显著减少了客户端与服务端的 CPU 编解码开销。</p>
+        <h2>二、结合 Reality 的抗封锁突破</h2>
+        <p>搭配最新的 Reality 伪装技术后，VLESS 能够完美借用正规境外顶级网站（如 Yahoo、Apple 等）的真实 TLS 证书与 SNI 握手流量，使得中间审查节点在统计学上无法区分代理流量与普通合法浏览，抗封锁能力大幅提升。</p>
+      `
+    }
+  ];
+
+  return terms.map(t => ({
+    params: { slug: t.slug },
+    props: { term: t }
+  }));
+}
+
+const { term } = Astro.props;
+---
+
+<Layout title={term.title} description={term.desc}>
+  <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
+        <a href="/" class="hover:text-blue-600">首页</a>
+        <span>/</span>
+        <a href="/glossary/" class="hover:text-blue-600">术语百科</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">{term.name}</span>
+      </div>
+
+      <span class="inline-block text-xs font-bold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800 mb-2">
+        网络术语通俗百科
+      </span>
+      <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        {term.name}
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-500 mt-1">
+        {term.desc}
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <article class="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+      <div set:html={term.content} />
+    </article>
+
+    <div class="mt-12 pt-6 border-t border-slate-200 flex items-center justify-between text-xs">
+      <a href="/glossary/" class="text-blue-600 font-semibold hover:underline">
+        &larr; 查看更多术语词条
+      </a>
+      <a href="/ranking/overall/" class="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-sm">
+        查看综合天梯榜 &rarr;
+      </a>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { allArticles } from '../../data/allArticles';
+
+export function getStaticPaths() {
+  return allArticles.map((art) => ({
+    params: { slug: art.slug },
+    props: { article: art },
+  }));
+}
+
+const { article } = Astro.props;
+
+const title = `${article.title} - GPT梯子机场帮手深度专栏`;
+const desc = article.desc;
+const keywords = `${article.keywords}, 机场推荐, 梯子推荐, 科学上网`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.h1,
+  description: article.desc,
+  author: {
+    '@type': 'Organization',
+    name: 'GPT梯子机场帮手特约专栏',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'GPT梯子机场帮手',
+  },
+};
+---
+
+<Layout title={title} description={desc} keywords={keywords} schema={articleSchema}>
+  <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
+        <a href="/" class="hover:text-blue-600">首页</a>
+        <span>/</span>
+        <a href="/blog/" class="hover:text-blue-600">技术博客</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">{article.categoryBadge}</span>
+      </div>
+
+      <span class="inline-block text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 mb-3">
+        {article.categoryBadge}
+      </span>
+      <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-snug">
+        {article.h1}
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+        {article.desc}
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <article class="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+      <div set:html={article.content} />
+    </article>
+
+    <!-- Bottom Actions & Navigation -->
+    <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <a href="/blog/" class="text-blue-600 font-semibold hover:underline">
+        &larr; 返回技术博客列表
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="/ranking/overall/" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg font-semibold text-slate-700">
+          🏆 查看综合天梯榜
+        </a>
+        <a href="/compare/" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold text-white shadow-sm">
+          ⚖️ 14家在线PK对比
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

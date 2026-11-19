@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white;
+  }
+}
+
+.prose pre {
+  @apply bg-slate-900 text-slate-100 rounded-xl p-4 overflow-x-auto text-sm;
+}
+
+.prose code:not(pre code) {
+  @apply bg-slate-100 text-blue-700 px-1.5 py-0.5 rounded text-sm font-mono border border-slate-200;
+}

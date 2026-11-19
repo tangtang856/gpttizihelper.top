@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "科学上网核心术语与协议通俗百科 - GPT梯子机场帮手";
+const desc = "科学上网常见专有名词白话科普。涵盖 IPLC、BGP、原生IP、VLESS、Shadowsocks 与规则分流底层机制。";
+
+const terms = [
+  { slug: 'iplc', name: 'IPLC 专线', desc: '不走公网的物理点对点内网专线，晚高峰丢包率 < 0.4%' },
+  { slug: 'bgp', name: 'BGP 中继', desc: '三网智能接入调度，自动根据宽带走向分配最优机房' },
+  { slug: 'native-ip', name: '原生 IP', desc: 'IP 注册地与机房一致的商业住宅 IP，流媒体与 ChatGPT 必备' },
+  { slug: 'vless', name: 'VLESS 协议', desc: '新一代无状态轻量化抗封锁传输协议，资源开销极低' },
+];
+---
+
+<Layout title={title} description={desc}>
+  <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl font-black text-slate-900 tracking-tight">科学上网专有名词通俗百科</h1>
+      <p class="text-slate-500 text-sm mt-2">用通俗大白话讲清楚线路、协议与节点底层机制</p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {terms.map((t) => (
+        <a
+          href={`/glossary/${t.slug}/`}
+          class="p-5 bg-white rounded-2xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all group block"
+        >
+          <h2 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+            {t.name} &rarr;
+          </h2>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+            {t.desc}
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

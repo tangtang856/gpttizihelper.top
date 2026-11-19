@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopPicks from '../components/TopPicks.astro';
+import CompareMatrix from '../components/CompareMatrix.astro';
+import ScenarioGuide from '../components/ScenarioGuide.astro';
+import { allGuides } from '../data/allGuides';
+import { allArticles } from '../data/allArticles';
+
+const featuredGuides = allGuides.slice(0, 4);
+const featuredArticles = allArticles.slice(0, 4);
+
+const pageTitle = "GPT梯子机场帮手 - 2026好用机场推荐与科学上网梯子选购指南";
+const pageDesc = "2026专业科学上网机场推荐与梯子选购指南。拒绝虚假测速与跑路套路，基于14大主流机场晚高峰丢包压测、单GB真实资费折算及ChatGPT/Netflix原生解锁实测，为你精选稳定高性价比机场节点。";
+const pageKeywords = "机场推荐, 机场节点, 性价比机场, 梯子推荐, vpn, vpn机场, vpn节点, vpn推荐, 科学上网, 翻墙机场";
+---
+
+<Layout title={pageTitle} description={pageDesc} keywords={pageKeywords}>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-white to-slate-50 py-16 sm:py-20 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-blue-100/80 text-blue-800 border border-blue-200 mb-6 shadow-sm">
+        <span>🤖 你的AI科学上网私人顾问已就位</span>
+        <span>·</span>
+        <span>专治晚高峰卡顿、掉线与跑路智商税</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
+        <span class="block mb-2 text-slate-800">🤖 GPT梯子机场帮手：拯救掉线与跑路！</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700">
+          2026精选机场推荐与梯子选购指南
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-5 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        还在对着 ChatGPT 的 <code>Access Denied</code> 抓狂？晚上8点想看个4K视频却一直在转圈圈？别焦虑，你的<strong>GPT梯子机场帮手</strong>带着真机实测数据来救场了！我们不讲空洞套话、不发虚假测速图，直接帮你扒开虚标商家的底裤：算清每一分钱的<strong>性价比机场</strong>每GB真实单价，全天候盯紧防断联高抗封的<strong>VPN机场</strong>与高可用<strong>VPN节点</strong>。无论是月付4.9元的平民学生党穷鬼套餐，还是晚高峰零丢包的企业级IPLC专线<strong>梯子推荐</strong>与客观<strong>VPN推荐</strong>，跟着帮手闭眼选，出海冲浪爽到飞起！
+      </p>
+
+      <!-- 4 Action Buttons Side-by-Side -->
+      <div class="mt-8 flex flex-wrap lg:flex-nowrap items-center justify-center gap-2.5 sm:gap-3 max-w-5xl mx-auto">
+        <a
+          href="/recommend/budget/"
+          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm shadow-blue-500/20 transition-all hover:scale-[1.02] whitespace-nowrap"
+        >
+          💰 薅羊毛·白菜价推荐
+        </a>
+        <a
+          href="/ranking/overall/"
+          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all hover:scale-[1.02] whitespace-nowrap"
+        >
+          🏆 2026封神榜·综合天梯
+        </a>
+        <a
+          href="/compare/"
+          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all hover:scale-[1.02] whitespace-nowrap"
+        >
+          ⚖️ 14家拉出来溜溜·在线PK
+        </a>
+        <a
+          href="/guides/"
+          class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm transition-all hover:scale-[1.02] whitespace-nowrap"
+        >
+          💻 小白救命·全套教程 (30篇)
+        </a>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12 pt-8 border-t border-slate-200/80 text-center">
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-slate-900">14</div>
+          <div class="text-xs text-slate-500 mt-0.5">帮手严选真实品牌</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-blue-600">100%</div>
+          <div class="text-xs text-slate-500 mt-0.5">无滤镜真机暴力实测</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-600">&lt; 0.4%</div>
+          <div class="text-xs text-slate-500 mt-0.5">专线晚高峰丝滑丢包率</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-slate-900">¥4.9起</div>
+          <div class="text-xs text-slate-500 mt-0.5">平民无门槛超低资费</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: TOP 4 避坑神机 (精选推荐，告别堆砌) -->
+  <TopPicks />
+
+  <!-- Section 2: 场景决策向导 (按需求快速对号入座) -->
+  <ScenarioGuide />
+
+  <!-- Section 3: 14 品牌速查对比矩阵 (全量数据，Tab交互过滤) -->
+  <CompareMatrix />
+
+  <!-- Section 4: 客户端精选教程与技术文章 -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Left: Guides -->
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">小白上手中心</div>
+              <h3 class="text-xl font-bold text-slate-900 mt-1">全平台客户端使用教程</h3>
+            </div>
+            <a href="/guides/" class="text-xs font-semibold text-blue-600 hover:text-blue-700">
+              全部 30 篇 &rarr;
+            </a>
+          </div>
+
+          <div class="space-y-3">
+            {featuredGuides.map((g) => (
+              <a
+                href={`/guides/${g.slug}/`}
+                class="block p-4 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-slate-50 transition-all group"
+              >
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">
+                    {g.platformBadge}
+                  </span>
+                  <span class="text-xs text-slate-400 group-hover:text-blue-600 transition-colors">阅读教程 &rarr;</span>
+                </div>
+                <h4 class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+                  {g.title}
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-1">
+                  {g.desc}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right: In-depth Articles -->
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider">深度技术视野</div>
+              <h3 class="text-xl font-bold text-slate-900 mt-1">避坑指南与协议深度剖析</h3>
+            </div>
+            <a href="/blog/" class="text-xs font-semibold text-blue-600 hover:text-blue-700">
+              全部 100 篇 &rarr;
+            </a>
+          </div>
+
+          <div class="space-y-3">
+            {featuredArticles.map((a) => (
+              <a
+                href={`/blog/${a.slug}/`}
+                class="block p-4 rounded-xl border border-slate-200 hover:border-emerald-300 hover:bg-slate-50 transition-all group"
+              >
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">
+                    {a.categoryBadge}
+                  </span>
+                  <span class="text-xs text-slate-400 group-hover:text-emerald-600 transition-colors">深度剖析 &rarr;</span>
+                </div>
+                <h4 class="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-1">
+                  {a.title}
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-1">
+                  {a.desc}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Bing SEO 核心常见问答 (FAQ) -->
+  <section class="py-12 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-extrabold text-slate-900">
+          科学上网选购与使用常见问题 (FAQ)
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">围绕机场节点、专线抗封、流媒体与ChatGPT解锁的真实解答</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-blue-600">Q:</span> 为什么说“新手千万不要直接梭哈年付”？
+          </h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            科学上网网络环境复杂多变，部分小作坊商家通过极低价格吸引大量年付后跑路。帮手始终建议：初次体验务必选择月付（如微风网络¥8/月或飞猫云）或不限时按量计费套餐（如飞V ¥29买断200GB），确认高峰期稳定后再考虑更长周期。
+          </p>
+        </div>
+
+        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-blue-600">Q:</span> IPLC/IEPL 专线和普通中继/公网中转有什么区别？
+          </h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            普通公网中转节点仍受国际公网出口拥堵和干扰影响，晚上8-11点晚高峰丢包率可能高达 10%~25%；而纯内网 IPLC/IEPL 专线节点走的是物理光纤内网专线直达海外机房，不经过公网审查网关，晚高峰丢包率可压制在 0.4% 以下。
+          </p>
+        </div>
+
+        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-blue-600">Q:</span> 为什么访问 ChatGPT 频繁遇到 Access Denied？
+          </h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            OpenAI 针对机房 IDC 广播 IP 实施了严厉的风控封禁策略。如果多人共用同一广播 IP，就会被判定为滥用而拦截。需要选择提供纯净商业原生 IP 或美国家庭住宅 IP 的专业机场（如灵猫全原生IP或微风网络），并开启精准规则分流。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
