@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/sync-to-root.js",
     "preview": "astro preview",
     "test": "node scripts/audit-astro-build.js",
     "indexnow": "node scripts/indexnow.js"
