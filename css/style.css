@@ -592,7 +592,7 @@ pre code {
 /* 推荐卡片网格 (Section 4) */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   margin: 1.75rem 0;
 }

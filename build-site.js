@@ -807,12 +807,12 @@ function generateRecommendations() {
         <p>很多朋友每个月只需要查查学术论文、偶尔看一段 YouTube 视频，或者在外办公时备用翻墙。花几十上百元买昂贵套餐往往造成大量流量月末清零浪费。<strong>低预算平价机场</strong>正是为解决这一痛点而生。</p>
         <div class="callout">
           <div class="callout-title">💡 平价机场选购核心经验法则</div>
-          <p>1. <strong>只选月付或按量计费</strong>：例如<strong>飞V（月付¥4.9起，或¥29买断200GB永久不清零）</strong>与<strong>微风网络（月付¥8包200GB超大流量）</strong>；<br>
-          2. <strong>注意优惠码抵扣</strong>：结账时使用专属优惠码如 <code>weifeng90</code>、<code>flycat888</code>、<code>firefly</code> 享受立减；<br>
-          3. <strong>备用意识</strong>：主力梯子之外建议配置一个不限时套餐双持备用，遇到突发断网不慌乱。</p>
+          <p>1. <strong>只选月付或按量计费</strong>：例如<strong>微风网络（月付¥8包200GB超大流量）</strong>与<strong>飞猫云（年付折合¥7/月）</strong>；<br>
+          2. <strong>注意优惠码抵扣</strong>：结账时使用专属优惠码如 <code>weifeng90</code>、<code>flycat888</code>、<code>yxr888</code> 享受立减；<br>
+          3. <strong>备用意识</strong>：主力专线之外建议配置高可用保障（如暮光网络与隐形人纯专线），遇到突发断网不慌乱。</p>
         </div>
       `,
-      selectedAirports: ['feiv', 'breezenet', 'feimaoyun', 'firefly']
+      selectedAirports: ['breezenet', 'muguang', 'feimaoyun', 'yinxingren']
     },
     {
       slug: "premium",
@@ -912,7 +912,7 @@ function generateRecommendations() {
   ];
 
   recommendations.forEach(rec => {
-    const matchedAirports = airports.filter(a => rec.selectedAirports.includes(a.id));
+    const matchedAirports = rec.selectedAirports.map(id => airports.find(a => a.id === id)).filter(Boolean);
 
     const contentHtml = `
       <div class="container" style="padding-top: 1.5rem; padding-bottom: 3.5rem;">
