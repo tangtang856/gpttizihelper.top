@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,30 +99,11 @@
           
         <div class="callout">
           <div class="callout-title">🍎 Mac 用户的优雅选择</div>
-          <p>在 macOS 上，<strong>Clash Verge Rev</strong> 提供了绝佳的视觉体验与对 Apple Silicon 芯片的原生低功耗支持；预算充裕的高端玩家亦可选择商业神级软件 <strong>Surge for Mac</strong>。</p>
+          <p>在 macOS 上，<strong>Clash Verge Rev</strong> 提供了绝佳的视觉体验与对 Apple Silicon 芯片的原生低功耗支持。</p>
         </div>
 
         <h2>一、下载与权限安装</h2>
-        <p>请根据你的 Mac 处理器架构选择对应的安装包：</p>
-        <ul>
-          <li><strong>Apple Silicon (M1/M2/M3/M4)</strong>：下载带 <code>aarch64.dmg</code> 的安装包；</li>
-          <li><strong>Intel 处理器机型</strong>：下载带 <code>x64.dmg</code> 的安装包。</li>
-        </ul>
-        <p>拖动软件至“应用程序”文件夹后打开。若遇到“无法验证开发者”提示，请在 Mac 的 <strong>系统设置 &rarr; 隐私与安全性</strong> 中点击“仍要打开”。</p>
-
-        <h2>二、配置订阅与系统代理</h2>
-        <ol>
-          <li>进入机场后台复制订阅链接；</li>
-          <li>在 Clash Verge Rev 中点击 <strong>Profiles</strong> &rarr; 粘贴链接并点击 <strong>Import</strong>；</li>
-          <li>选中订阅后，进入 <strong>Settings</strong>，打开 <strong>System Proxy</strong>；</li>
-          <li>在 <strong>Proxies</strong> 中选择延迟最低的节点即可正常上网。</li>
-        </ol>
-
-        <h2>三、开发者必看：终端终端命令行代理配置</h2>
-        <p>很多开发者在终端中执行 <code>git clone</code> 或 <code>npm install</code> 时依然非常缓慢，这是因为系统代理默认不对命令行生效。可以在 <code>~/.zshrc</code> 中加入以下别名：</p>
-        <pre><code># 快捷开启与关闭终端代理 (根据客户端本地混合端口设置，通常为 7897 或 7890)
-alias proxy='export all_proxy=socks5://127.0.0.1:7897; export http_proxy=http://127.0.0.1:7897; export https_proxy=http://127.0.0.1:7897'
-alias unproxy='unset all_proxy http_proxy https_proxy'</code></pre>
+        <p>Apple Silicon (M1/M2/M3/M4) 用户下载带 <code>aarch64.dmg</code> 的安装包；Intel 机型下载 <code>x64.dmg</code> 安装包。拖动软件至应用程序文件夹中打开即可。</p>
       
 
           <div style="margin-top: 3rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);">
@@ -219,14 +200,13 @@ alias unproxy='unset all_proxy http_proxy https_proxy'</code></pre>
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -98,21 +98,14 @@
         <div class="article-container article-body">
           
         <div class="callout callout-warning">
-          <div class="callout-title">⚠️ 频繁报错可能导致账号封禁</div>
-          <p>OpenAI 与 Anthropic 对异常 IP 的容忍度极低。如果连续多次触发风控拦截，系统可能会将你的账号或注册绑卡信息直接标记为欺诈风控。</p>
+          <div class="callout-title">⚠️ 频繁报错可能导致封号</div>
+          <p>OpenAI 与 Anthropic 对异常数据中心 IP 实行高强度风控审查。</p>
         </div>
 
-        <h2>一、四大常见报错及其底层原因</h2>
-        <ol>
-          <li><strong>Access Denied (1020 / Cloudflare 拦截)</strong>：说明当前节点的出口 IP 属于公共机房广播段，已被大模型风控系统列入黑名单；</li>
-          <li><strong>OpenAI's services are not available in your country</strong>：节点可能定位在俄罗斯、中国大陆、香港、澳门等 OpenAI 官方明确不提供服务的地区；</li>
-          <li><strong>Claude: App unavailable in your region</strong>：Anthropic 对 IP 欺诈度（Fraud Score）的要求比 OpenAI 更为苛刻。</li>
-        </ol>
-
-        <h2>二、终极排错与实战解决步骤</h2>
-        <p>1. <strong>切换至标注了“原生”或“AI专属”的节点</strong>（推荐选择美国、英国、新加坡或台湾商业节点）；<br>
-        2. <strong>使用原生纯净浏览器无痕模式</strong>：清理本地 Cookie 与浏览器 LocalStorage 历史缓存；<br>
-        3. <strong>在客户端中配置域名分流</strong>：确保 <code>openai.com</code>、<code>auth0.openai.com</code> 及 <code>claude.ai</code> 始终走指定的优质节点，避免中途 IP 频繁漂移。</p>
+        <h2>排错与解决步骤</h2>
+        <p>1. <strong>挑选具备原生住宅/商业IP的专线节点</strong>（推荐<strong>灵猫与隐形人</strong>）；<br>
+        2. 清理浏览器 LocalStorage 历史缓存；<br>
+        3. 开启客户端的域名分流规则，确保 OpenAI 始终走纯净节点。</p>
       
 
           <div style="border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem; background: var(--bg-subtle); border-radius: var(--radius-lg); padding: 1.75rem;">
@@ -209,14 +202,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

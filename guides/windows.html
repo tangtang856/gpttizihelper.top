@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -103,16 +103,16 @@
         </div>
 
         <h2>第一步：下载并安装客户端</h2>
-        <p>为确保安全，请务必从官方 GitHub Release 页面下载正版安装包，切勿在百度搜索下载捆绑了恶意广告的所谓“汉化版”：</p>
+        <p>为确保安全，请务必从官方 GitHub Release 页面下载正版安装包：</p>
         <ul>
           <li><strong>Clash Verge Rev</strong>：下载 <code>Clash.Verge_x64-setup.exe</code> 并在电脑上常规安装；</li>
           <li><strong>v2rayN</strong>：下载带 <code>Core</code> 的压缩包解压即用。</li>
         </ul>
 
         <h2>第二步：获取并导入机场订阅链接</h2>
-        <p>登录你所购买的<strong>机场推荐</strong>后台（如泡芙云、魔戒等），进入“仪表盘”或“用户中心”：</p>
+        <p>登录你所购买的<strong>机场推荐</strong>后台（如微风网络、隐形人、飞V等），进入“仪表盘”或“用户中心”：</p>
         <ol>
-          <li>找到“快捷导入”或“复制订阅链接”按钮，复制以 <code>https://...</code> 开头的专属订阅地址；</li>
+          <li>找到“快捷导入”或“复制订阅链接”按钮，复制专属订阅地址；</li>
           <li>打开 Clash Verge Rev，点击左侧菜单栏的 <strong>Profiles（配置）</strong>；</li>
           <li>在顶部输入框粘贴刚才复制的订阅链接，点击 <strong>Import（导入）</strong>；</li>
           <li>导入成功后，鼠标单击选中该配置项（呈现高亮激活状态）。</li>
@@ -121,17 +121,10 @@
         <h2>第三步：选择节点并开启系统代理</h2>
         <ol>
           <li>点击左侧的 <strong>Proxies（代理）</strong> 菜单，选择代理模式为 <strong>Rule（规则分流）</strong>；</li>
-          <li>在“节点选择”分组中，点击延迟测试按钮（⚡），挑选一个延迟较低的节点（如香港、日本）；</li>
+          <li>挑选一个延迟较低的节点（如香港、日本）；</li>
           <li>回到 <strong>Settings（设置）</strong> 界面，将 <strong>System Proxy（系统代理）</strong> 开关打开；</li>
           <li>此时打开浏览器，访问 <code>google.com</code> 或 <code>youtube.com</code> 即可秒开！</li>
         </ol>
-
-        <h2>第四步：高级进阶 - 开启 TUN 虚拟网卡模式</h2>
-        <p>如果你需要让 Telegram 桌面端、Discord 语音或Steam游戏等不遵守系统代理设置的软件也走代理，需要开启 TUN 模式：</p>
-        <div class="callout callout-warning">
-          <div class="callout-title">⚠️ 开启 TUN 模式注意事项</div>
-          <p>在 Clash Verge Rev 设置中，先点击安装 <strong>Service Mode（服务模式）</strong> 并以管理员权限重启软件，随后即可一键开启 <strong>Tun Mode</strong>。开启后电脑所有流量将被网卡级接管。</p>
-        </div>
       
 
           <div style="margin-top: 3rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);">
@@ -228,14 +221,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

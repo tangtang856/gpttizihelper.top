@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,25 +99,14 @@
           
         <div class="callout">
           <div class="callout-title">术语名片</div>
-          <p><strong>BGP</strong> (Border Gateway Protocol，边界网关协议) 是一种路由选择协议。在机场行业中，“BGP中转”通常是指在国内接入了多线（电信、联通、移动）BGP 机房的入口服务器，将用户流量通过国内节点加密转发至境外落地机房的技术架构。</p>
+          <p><strong>BGP</strong> 是一种路由选择协议。在机场行业中，“BGP中转”通常是指在国内接入了电信、联通、移动多线机房的入口服务器，智能调度全国流量转发至海外节点。</p>
         </div>
-
-        <h2>BGP 中转的工作原理</h2>
-        <ol>
-          <li>无论用户本地使用的是中国电信、中国联通还是中国移动宽带，BGP 入口机房都能自动分配最优的直连路由，避免跨网互联延迟；</li>
-          <li>入口机房收到用户请求后，通过专有加密隧道将数据包发送至海外服务器；</li>
-          <li>海外落地服务器访问目标网站（如 Google），并将网页内容原路返回。</li>
-        </ol>
-
-        <h2>优点与局限性</h2>
-        <p><strong>优点</strong>：价格亲民，全国三网用户速度均衡，能有效保护海外落地机房IP不受封禁；<br>
-        <strong>局限性</strong>：跨境部分依然依赖公网传输，在遇到国际海缆故障或极端公网拥堵时，可能产生轻微抖动。</p>
       
 
           <div style="border-top: 1px solid var(--border); padding-top: 1.75rem; margin-top: 3rem; background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">了解了技术原理，去看看实际支持该特性的机场吧：</h3>
+            <h3 style="margin-bottom: 0.5rem;">查看实际支持该特性的推荐机场：</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-              理论结合实践，前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
+              前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
             </p>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="../recommend/premium.html" class="btn btn-primary btn-sm">高端专线机场推荐</a>
@@ -208,14 +197,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

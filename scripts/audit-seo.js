@@ -9,11 +9,10 @@ const path = require('path');
 const ROOT_DIR = path.join(__dirname, '..');
 const DOMAIN = 'gpttizihelper.top';
 
-// 递归获取所有 HTML 文件
 function getHtmlFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
   for (const file of files) {
-    if (file === 'node_modules' || file === '.git') continue;
+    if (file === 'node_modules' || file === '.git' || file === 'scripts') continue;
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
     if (stat.isDirectory()) {
@@ -28,7 +27,6 @@ function getHtmlFiles(dir, fileList = []) {
 const htmlFiles = getHtmlFiles(ROOT_DIR);
 console.log(`🔍 正在审计 ${htmlFiles.length} 个 HTML 页面 SEO 元数据...\n`);
 
-let passCount = 0;
 let failCount = 0;
 const errors = [];
 const titlesSeen = new Map();

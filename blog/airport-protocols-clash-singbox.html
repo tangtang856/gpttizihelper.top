@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>常见翻墙协议全对比：Shadowsocks、Trojan、Vless与Hysteria2 - GPT梯子助手</title>
-  <meta name="description" content="2026年最新代理协议技术剖析：Shadowsocks、Trojan、V2Ray Vless Reality 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。">
+  <meta name="description" content="2026年最新代理协议技术剖析：Shadowsocks、Trojan、Vless 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。">
   <meta name="keywords" content="翻墙协议, Shadowsocks, Trojan, Vless, Hysteria2, 机场节点">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://gpttizihelper.top/blog/airport-protocols-clash-singbox.html">
@@ -14,10 +14,10 @@
   <meta property="og:site_name" content="GPT梯子助手">
   <meta property="og:url" content="https://gpttizihelper.top/blog/airport-protocols-clash-singbox.html">
   <meta property="og:title" content="常见翻墙协议全对比：Shadowsocks、Trojan、Vless与Hysteria2 - GPT梯子助手">
-  <meta property="og:description" content="2026年最新代理协议技术剖析：Shadowsocks、Trojan、V2Ray Vless Reality 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。">
+  <meta property="og:description" content="2026年最新代理协议技术剖析：Shadowsocks、Trojan、Vless 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="常见翻墙协议全对比：Shadowsocks、Trojan、Vless与Hysteria2 - GPT梯子助手">
-  <meta name="twitter:description" content="2026年最新代理协议技术剖析：Shadowsocks、Trojan、V2Ray Vless Reality 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。">
+  <meta name="twitter:description" content="2026年最新代理协议技术剖析：Shadowsocks、Trojan、Vless 与 Hysteria 2 协议的加密开销、抗封锁特征与弱网加速能力全方位实测对比。">
 
   <!-- 严格相对路径加载 CSS 与 JS -->
   <link rel="stylesheet" href="../css/style.css">
@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -98,16 +98,15 @@
         <div class="article-container article-body">
           
         <div class="callout">
-          <div class="callout-title">协议演进史</div>
-          <p>从最早的简单对称加密（SS），到伪装成标准 HTTPS 流量（Trojan / Reality），再到基于 UDP 自定义抗弱网拥塞（Hysteria 2），协议的发展始终是与防火墙审查技术的博弈过程。</p>
+          <div class="callout-title">协议演进</div>
+          <p>协议的发展始终是与防火墙深度包检测技术的博弈过程。</p>
         </div>
 
-        <h2>各主流协议详细对比</h2>
+        <h2>主流协议特性分析</h2>
         <ul>
-          <li><strong>Shadowsocks (SS)</strong>：最为经典轻量，CPU 占用极低，但公网直连极易被识别，目前主要搭配在 IPLC/IEPL 内网专线中使用；</li>
-          <li><strong>Trojan</strong>：将流量完美伪装成合法的 TLS/HTTPS 网站访问，过墙能力优秀，兼容性极佳；</li>
-          <li><strong>Vless + Reality</strong>：新一代免证书借壳伪装方案，直接借用国内外真实大型网站的证书特征，具备极高的抗主动探测能力；</li>
-          <li><strong>Hysteria 2 (歇斯底里)</strong>：基于修改版 QUIC/UDP 协议，专门为恶劣丢包网络设计。即使在 30% 丢包的恶劣校园网或蜂窝弱网下，依然能暴力跑满带宽。</li>
+          <li><strong>VLESS</strong>：轻量高效，去除了冗余加密特征，微风网络、暮光网络、隐形人均深度支持；</li>
+          <li><strong>Shadowsocks</strong>：经典协议，搭配 IPLC 专线使用效果极佳；</li>
+          <li><strong>Trojan</strong>：完美伪装为标准 HTTPS 流量，稳定防封锁。</li>
         </ul>
       
 
@@ -205,14 +204,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

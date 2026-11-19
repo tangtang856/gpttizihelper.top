@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,24 +99,17 @@
           
         <div class="callout">
           <div class="callout-title">术语名片</div>
-          <p><strong>IPLC</strong> (International Private Leased Circuit，国际私有租用线路) 指跨国电信运营商提供的点对点端到端私有通信专线。<strong>IEPL</strong> (International Ethernet Private Line) 则是其二层以太网升级版。</p>
+          <p><strong>IPLC</strong> 指跨国电信运营商提供的点对点端到端私有通信专线。<strong>IEPL</strong> 则是其二层以太网升级版。</p>
         </div>
 
         <h2>为什么 IPLC 专线“不会被封锁”？</h2>
-        <p>普通公网翻墙必须经过国家防火墙（GFW）的国际出口网关，受到深度包检测（DPI）算法的实时嗅探；而 IPLC 专线是纯企业内部网络，国内入口机房与海外出口机房之间是直接由物理海底光缆内网互通，<strong>根本不走公网国际出口</strong>，因此完全不存在被 GFW 拦截或阻断的技术可能。</p>
-
-        <h2>主要优势与成本现实</h2>
-        <ul>
-          <li><strong>零晚高峰拥塞</strong>：专有独享带宽保障，晚上8~11点丢包率通常低于0.5%；</li>
-          <li><strong>物理极致低延迟</strong>：深港专线时延低至 5ms；沪日专线低至 28ms；</li>
-          <li><strong>租金高昂</strong>：1Gbps 的合规 IPLC 专线月租金高达数万元人民币，因此正规专线机场的套餐单价必然高于普通中转。</li>
-        </ul>
+        <p>IPLC 专线是纯企业内部网络，国内入口机房与海外出口机房之间是直接通过物理海底光缆内网互通，<strong>根本不走公网国际出口</strong>，因此完全不存在被 GFW 拦截或阻断的技术可能。</p>
       
 
           <div style="border-top: 1px solid var(--border); padding-top: 1.75rem; margin-top: 3rem; background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">了解了技术原理，去看看实际支持该特性的机场吧：</h3>
+            <h3 style="margin-bottom: 0.5rem;">查看实际支持该特性的推荐机场：</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-              理论结合实践，前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
+              前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
             </p>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="../recommend/premium.html" class="btn btn-primary btn-sm">高端专线机场推荐</a>
@@ -207,14 +200,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,20 +99,14 @@
           
         <div class="callout">
           <div class="callout-title">术语名片</div>
-          <p><strong>Hysteria 2</strong> 是一款专门为恶劣网络环境量身定制的高性能代理协议，底层基于标准 QUIC（UDP）深度改造，采用自定义拥塞控制算法，主打“高丢包率下依然暴力跑满带宽”。</p>
+          <p><strong>Hysteria 2</strong> 是一款专门为恶劣网络环境量身定制的高性能代理协议，底层基于标准 QUIC（UDP）深度改造，主打弱网暴力提速。</p>
         </div>
-
-        <h2>为什么传统 TCP 协议在弱网下极其缓慢？</h2>
-        <p>传统的 TCP 协议具有严格的拥塞控制逻辑（如 Reno、Cubic）：一旦网络出现 10% 的丢包，TCP 就会认为发生了网络拥塞，主动将传输速度断崖式砍半，导致即使物理带宽很大，实际观看视频也卡顿不堪。</p>
-
-        <h2>Hysteria 2 的突破与适用场景</h2>
-        <p>Hysteria 2 抛弃了传统 TCP 的消极减速逻辑，在即使遇到 20%~30% 丢包时依然保持高效的数据包重传与持续吞吐，因此在<strong>校园网、移动蜂窝网络或高峰期拥挤网络</strong>下提速极为惊人。</p>
       
 
           <div style="border-top: 1px solid var(--border); padding-top: 1.75rem; margin-top: 3rem; background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">了解了技术原理，去看看实际支持该特性的机场吧：</h3>
+            <h3 style="margin-bottom: 0.5rem;">查看实际支持该特性的推荐机场：</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-              理论结合实践，前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
+              前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
             </p>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="../recommend/premium.html" class="btn btn-primary btn-sm">高端专线机场推荐</a>
@@ -203,14 +197,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

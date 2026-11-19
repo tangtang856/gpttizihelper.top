@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,21 +99,14 @@
           
         <div class="callout">
           <div class="callout-title">术语名片</div>
-          <p><strong>分流（Routing / Rules）</strong> 是现代智能代理客户端的灵魂。它通过匹配目标网址的域名、IP或地理位置，决定该请求是“直接连接”、“走特定代理节点”还是“直接拦截”。</p>
+          <p><strong>分流（Routing / Rules）</strong> 通过匹配目标网址的域名或地理位置，决定该请求是直接连接、走代理还是直接丢弃。</p>
         </div>
-
-        <h2>三大核心概念通俗解释</h2>
-        <ul>
-          <li><strong>Rule (分流规则)</strong>：匹配清单（如 <code>DOMAIN-SUFFIX,google.com,PROXY</code> 表示所有以 google.com 结尾的网址走代理；<code>GEOIP,CN,DIRECT</code> 表示所有中国大陆IP直连）；</li>
-          <li><strong>Proxy Group (策略组)</strong>：节点的集合容器。例如“节点选择”、“自动测速（URL-Test）”、“故障转移（Fallback）”等；</li>
-          <li><strong>DIRECT 与 REJECT</strong>：DIRECT 表示不走代理直接由本地宽带访问；REJECT 表示直接丢弃拦截（常用于广告屏蔽）。</li>
-        </ul>
       
 
           <div style="border-top: 1px solid var(--border); padding-top: 1.75rem; margin-top: 3rem; background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">了解了技术原理，去看看实际支持该特性的机场吧：</h3>
+            <h3 style="margin-bottom: 0.5rem;">查看实际支持该特性的推荐机场：</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-              理论结合实践，前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
+              前往综合排行榜或专题推荐，查看各品牌对专线与新兴协议的实际支持情况：
             </p>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="../recommend/premium.html" class="btn btn-primary btn-sm">高端专线机场推荐</a>
@@ -204,14 +197,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

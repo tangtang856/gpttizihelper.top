@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,27 +99,17 @@
           
         <div class="callout">
           <div class="callout-title">🍏 苹果用户的核心前置条件</div>
-          <p>由于中国大陆 App Store 政策限制，所有科学上网客户端（Shadowrocket、Loon、Surge、Quantumult X）均未在国区上架。你需要准备一个<strong>非国区（如美区、日区、港区）的 Apple ID</strong> 进行下载。</p>
+          <p>由于中国大陆 App Store 政策限制，所有科学上网客户端（Shadowrocket、Loon、Surge）均未在国区上架。你需要准备一个<strong>非国区（如美区、日区、港区）的 Apple ID</strong> 进行下载。</p>
         </div>
 
         <h2>第一步：获取美区 Apple ID 与下载小火箭</h2>
         <ol>
-          <li>自行注册一个免费美区 Apple ID（可参考网上的免信用卡教程），或通过正规渠道获取一个独享美区账号；</li>
-          <li>打开 App Store，退出国区账号，登录美区账号；</li>
-          <li>搜索 <strong>Shadowrocket</strong>（图标为浅蓝色背景的小火箭，官方售价通常为 $2.99），完成购买并下载；</li>
-          <li><strong>切记：下载完成后立即退回自己的常用国区账号，切勿在系统设置中登录他人 iCloud！</strong></li>
+          <li>登录美区 Apple ID，在 App Store 搜索 <strong>Shadowrocket</strong> 并下载；</li>
+          <li>下载完成后立即退回自己的常用国区账号。</li>
         </ol>
 
         <h2>第二步：添加机场订阅</h2>
-        <p>Shadowrocket 支持极其便捷的添加方式：</p>
-        <ul>
-          <li><strong>方式 A（一键导入）</strong>：在手机 Safari 浏览器中登录你的机场后台，点击“一键导入 Shadowrocket”，系统会自动唤醒小火箭并完成添加；</li>
-          <li><strong>方式 B（扫码添加）</strong>：在电脑屏幕上打开机场后台的节点二维码，点击小火箭左上角的扫描图标直接扫码；</li>
-          <li><strong>方式 C（手动添加）</strong>：点击右上角 <strong>+号</strong>，类型选择 <strong>Subscribe</strong>，URL 栏粘贴订阅链接并点击保存。</li>
-        </ul>
-
-        <h2>第三步：选择节点并连接</h2>
-        <p>在首页全局路由选择 <strong>配置 (Config)</strong>（推荐配置，自动国内直连、国外走代理），在节点列表中点击一个延迟较低的节点，然后打开最上方的连接开关即可。</p>
+        <p>在手机 Safari 浏览器中登录你的机场后台，点击“一键导入 Shadowrocket”，系统会自动唤醒小火箭并完成添加，随后开启顶部开关即可。</p>
       
 
           <div style="margin-top: 3rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);">
@@ -216,14 +206,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

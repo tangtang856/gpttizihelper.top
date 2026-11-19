@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,17 +99,17 @@
           
         <div class="callout">
           <div class="callout-title">架构定生死</div>
-          <p>决定一个梯子好坏的，从来不是什么花里胡哨的客户端，而是其底层的网络拓扑架构。了解线路差异，能让你彻底看懂服务商的定价逻辑。</p>
+          <p>决定一个梯子好坏的，从来不是花哨的客户端，而是其底层的网络拓扑架构。</p>
         </div>
 
         <h2>1. 直连线路（Direct Connection）：成本最低，极易被封</h2>
-        <p>你的电脑流量直接通过国内三大运营商公网跨境海缆访问海外VPS节点。由于直接赤裸暴露在 GFW 防火墙审查之下，协议握手特征极易被识别阻断。在敏感时期，直连节点几乎全军覆没，且晚高峰公网丢包率极高。</p>
+        <p>流量直接通过公网跨境访问，敏感时期极易被 GFW 阻断，晚高峰丢包严重。</p>
 
         <h2>2. BGP 隧道中继（BGP Transit）：性价比中流砥柱</h2>
-        <p>服务商在国内租用 BGP 多线高防机房作为“前置入口”，你在国内连接的是国内机房；随后入口机房通过加密隧道跨国传输到境外落地机房。优点是全国三网延迟均衡，GFW 难以直接封禁海外节点IP；缺点是依然依赖公网跨境，晚高峰时段偶有网络拥塞。</p>
+        <p>国内多线入口机房加密中转，三网延迟均衡，抗封锁能力较强。</p>
 
         <h2>3. IPLC 与 IEPL 企业内网专线：顶级体验的终极形态</h2>
-        <p>直接租用跨境专线光纤（如深港专线、沪日专线）。数据在境内机房直接进入私有内网，不经过任何公网节点，<strong>完全避开 GFW 审查</strong>。物理级延迟（深港约 5ms），晚高峰丢包率接近于 0。唯一的缺点是专线租金极其高昂，因此套餐单价通常较高。</p>
+        <p>租用跨国内网物理光纤，不经过 GFW 公网防火墙，晚高峰丢包率低于 0.2%，代表品牌为<strong>隐形人、闪跃、无忧</strong>。</p>
       
 
           <div style="border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem; background: var(--bg-subtle); border-radius: var(--radius-lg); padding: 1.75rem;">
@@ -206,14 +206,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>

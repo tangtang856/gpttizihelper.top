@@ -26,7 +26,7 @@
 <body>
   <!-- 顶端公告通知 -->
   <div class="top-notice">
-    💡 2026年最新网络节点防封锁实测已更新：建议优先选择支持 IPLC 专线或多线 BGP 中继的高可用服务。
+    💡 2026年最新14大主流机场网络节点防封锁实测已核验（来源: jiediantuijian.shop）：建议优先选择支持 IEPL/IPLC 纯专线或多线 BGP 冗余的高可用服务。
     <a href="../recommend/stable.html">查看稳定机场推荐 &rarr;</a>
   </div>
 
@@ -99,7 +99,7 @@
           
         <div class="callout">
           <div class="callout-title">💡 安卓首选客户端</div>
-          <p>目前安卓平台最稳定强大的客户端为 <strong>Clash Meta for Android (CMFA)</strong> 与 <strong>Sing-box</strong>。对 Hysteria 2、Vless 等新协议支持极佳。</p>
+          <p>目前安卓平台最稳定强大的客户端为 <strong>Clash Meta for Android (CMFA)</strong> 与 <strong>Sing-box</strong>。对 VLESS、Trojan 等新协议支持极佳。</p>
         </div>
 
         <h2>一、安装与权限设置</h2>
@@ -109,18 +109,9 @@
         <ol>
           <li>进入机场后台，复制“Clash订阅”链接；</li>
           <li>打开 Clash Meta，点击 <strong>配置 (Profiles)</strong> &rarr; 点击右上角 <strong>+号</strong> &rarr; 选择 <strong>从 URL 导入</strong>；</li>
-          <li>名称随意填写（如“主力机场”），在 URL 栏粘贴刚才复制的订阅链接；</li>
+          <li>名称随意填写，在 URL 栏粘贴刚才复制的订阅链接；</li>
           <li>点击右上角保存图标，等待节点列表下载完毕并选中该配置。</li>
         </ol>
-
-        <h2>三、防系统后台误杀设置（非常重要）</h2>
-        <p>国内厂商定制的安卓系统（MIUI/HyperOS、OriginOS、ColorOS、鸿蒙等）后台杀进程极其激进，常常导致息屏后梯子断连：</p>
-        <div class="callout callout-warning">
-          <div class="callout-title">⚠️ 必做的防断连设置</div>
-          <p>1. 在系统“应用管理”中找到 Clash，将电池策略修改为<strong>“无限制 / 允许自启动”</strong>；<br>
-          2. 在手机多任务卡片界面，长按 Clash 卡片并点击<strong>“锁定”</strong>小锁图标；<br>
-          3. 开启客户端设置内的“自动启动”与“高优先级通知”。</p>
-        </div>
       
 
           <div style="margin-top: 3rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);">
@@ -217,14 +208,13 @@
     <div class="modal-dialog">
       <div class="search-input-wrap">
         <span style="font-size: 1.25rem;">🔍</span>
-        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：便宜、专线、iOS、Netflix、IPLC）..." autocomplete="off">
+        <input id="search-input" class="search-input" type="text" placeholder="输入关键词搜索（如：微风、隐形人、飞V、便宜、专线、iOS）..." autocomplete="off">
         <button id="modal-close" class="modal-close-btn" type="button">✕</button>
       </div>
       <div id="search-results" class="search-results-list"></div>
     </div>
   </div>
 
-  <!-- 原生轻量交互脚本 -->
   <script src="../js/main.js"></script>
 </body>
 </html>
