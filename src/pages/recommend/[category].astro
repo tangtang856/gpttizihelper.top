@@ -6,11 +6,11 @@ export function getStaticPaths() {
   const categories = [
     {
       category: 'budget',
-      title: '2026高性价比平价机场推荐 - 月付¥4.9起白菜价梯子选购',
-      h1: '2026白菜价平价机场推荐：学生党与高性价比科学上网首选',
-      desc: '专为预算有限与学生党精选的高性价比平价机场推荐。拒绝高价智商税，月付¥4.9~¥8起，每GB单价低至0.04元，兼顾高速IEPL专线与充沛月度流量。',
-      matchIds: ['breezenet', 'feiv', 'feimaoyun', 'firefly'],
-      rationale: '在白菜价梯子选择中，最忌讳只看月租而忽略每GB真实单价与是否会突然断流。本专题精选的4款平价机场，均经过晚高峰压力测试，起步门槛亲民且月度流量充足。',
+      title: '2026精选高性价比与专线机场推荐 - 科学上网梯子选购指南',
+      h1: '2026精选机场推荐：晚高峰专线与高性价比科学上网首选',
+      desc: '专为追求高性价比与晚高峰稳定性的科学上网用户精选推荐。涵盖微风网络、飞猫云、萤火虫与隐形人等实力品牌，每GB单价低至0.04元，兼顾高速IEPL专线与充沛月度流量。',
+      matchIds: ['breezenet', 'feimaoyun', 'firefly', 'yinxingren'],
+      rationale: '科学上网梯子选择中，既要考虑每GB真实单价，更要看重晚高峰是否会卡顿断流。本专题精选的4款品牌（微风网络、飞猫云、萤火虫、隐形人），均经过晚高峰真机压力测试，兼顾价格亲民与企业级纯专线极速体验。',
     },
     {
       category: 'premium',
@@ -62,8 +62,8 @@ export function getStaticPaths() {
 
 const { title, h1, desc, matchIds, rationale } = Astro.props;
 
-// Filter airports matching this category
-const matchedAirports = airports.filter((a) => matchIds.includes(a.id));
+// Filter airports matching this category and preserve exact order
+const matchedAirports = matchIds.map((id: string) => airports.find((a) => a.id === id)!).filter(Boolean);
 ---
 
 <Layout title={title} description={desc}>
