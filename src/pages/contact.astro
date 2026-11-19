@@ -1,37 +1,78 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "联系我们与问题反馈 - GPT梯子机场帮手";
-const desc = "GPT梯子机场帮手联系方式与报错通道。欢迎机场运营方提供真机测试节点，读者提交跑路预警或纠错建议。";
+const title = "联系我们与商务合作 - GPT梯子机场帮手";
+const desc = "GPT梯子机场帮手官方联系通道。欢迎海内外机场服务商申请真机测速入驻、广告合作、专属折扣码配置，以及读者提交测速纠错或跑路预警。";
 ---
 
 <Layout title={title} description={desc}>
   <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-3xl font-black text-slate-900 tracking-tight">联系帮手与反馈通道</h1>
-      <p class="text-slate-500 text-sm mt-2">随时欢迎读者纠错、跑路预警与技术交流</p>
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 mb-3 shadow-sm">
+        <span>💬 官方客服直联通道</span>
+      </div>
+      <h1 class="text-3xl font-black text-slate-900 tracking-tight">联络我们 · 商务合作</h1>
+      <p class="text-slate-500 text-sm mt-2">支持 Gmail 邮件交流与 Telegram 在线极速直连</p>
     </div>
   </div>
 
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <h2 class="text-lg font-bold text-slate-900 mb-2">读者纠错与跑路预警</h2>
-        <p class="text-xs text-slate-500 leading-relaxed mb-4">
-          如果您购买的某家机场出现大面积断流、老板失联、频繁更换域名或资费虚假宣传，请立即向我们预警，我们将第一时间复核并在排行榜中亮红牌。
-        </p>
-        <div class="p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
-          反馈邮箱：support@gpttizihelper.top
+      <!-- 1. Gmail -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl p-2 bg-blue-50 text-blue-600 rounded-xl">📧</span>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
+              商务 / 送测 / 勘误
+            </span>
+          </div>
+          <h2 class="text-lg font-bold text-slate-900 mb-2">官方邮箱联系 (Gmail)</h2>
+          <p class="text-xs text-slate-500 leading-relaxed mb-4">
+            欢迎海内外机场运营方申请晚高峰真机测速入驻、专属优惠码兑换、广告商务合作或读者提交线路勘误。工作日 24 小时内必复。
+          </p>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-mono font-bold text-slate-900 select-all mb-4">
+            xintangtang888@gmail.com
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100">
+          <a
+            href="mailto:xintangtang888@gmail.com"
+            class="block w-full py-2.5 text-center text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-sm"
+          >
+            ✉️ 发送邮件直达 (Gmail) &rarr;
+          </a>
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <h2 class="text-lg font-bold text-slate-900 mb-2">机场商家接入与测试申请</h2>
-        <p class="text-xs text-slate-500 leading-relaxed mb-4">
-          我们欢迎任何具备真实 IPLC/IEPL 专线资质的优质机场申请加入评测。请提供可供晚高峰真机压力测试的完整节点订阅，我们不接受无测试节点的空洞公关合作。
-        </p>
-        <div class="p-3 bg-slate-50 rounded-lg text-xs font-mono text-slate-700">
-          商务沟通：business@gpttizihelper.top
+      <!-- 2. Telegram -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl p-2 bg-sky-50 text-sky-600 rounded-xl">✈️</span>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">
+              实时在线极速响应
+            </span>
+          </div>
+          <h2 class="text-lg font-bold text-slate-900 mb-2">Telegram 官方直连 (TLG)</h2>
+          <p class="text-xs text-slate-500 leading-relaxed mb-4">
+            站长与专属客服在线直连。适合紧急技术工单咨询、大促加急合作、出海网络测评交流及跑路紧急预警。
+          </p>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-mono font-bold text-slate-900 select-all mb-4">
+            @xintangtang
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100">
+          <a
+            href="https://t.me/xintangtang"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full py-2.5 text-center text-xs font-bold text-white bg-sky-500 hover:bg-sky-600 rounded-xl transition-colors shadow-sm"
+          >
+            ✈️ 打开 Telegram 直连对话 (@xintangtang) &rarr;
+          </a>
         </div>
       </div>
     </div>
