@@ -1,140 +1,433 @@
 ---
 import { airports } from '../data/airports';
 
-// 精选 4 家最具有代表性的主力品牌（性价比王、晚高峰防封王、超值追剧王、极致轻量王）
-const topAirports = [
+// 按照综合评测梯队组织 14 家机场（每组 3 家，搭配 1 个专属「看下一页的机场」交互卡片）
+const airportGroups = [
+  // 第 1 批：顶级专线与高性价比先锋
   {
-    ...airports.find(a => a.id === 'breezenet')!,
-    tag: '💰 年度性价比之王',
-    tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    highlight: '¥8/月 标配 200GB 超大流量，IEPL内网专线抗封锁',
+    page: 1,
+    title: '第一组：高性价比与顶级专线梯队',
+    nextSummary: '下一页包含：浪网 WaveNet、灵猫、跨界等',
+    items: [
+      {
+        ...airports.find(a => a.id === 'yinxingren')!,
+        tag: '⚡ 晚高峰专线抗封王',
+        tagColor: 'bg-purple-50 text-purple-700 border-purple-200',
+        highlight: '全天候纯内网专线，晚高峰 0 丢包，企业与重度用户首选',
+      },
+      {
+        ...airports.find(a => a.id === 'breezenet')!,
+        tag: '💰 年度性价比之王',
+        tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        highlight: '¥8/月 标配 200GB 超大流量，IEPL内网专线抗封锁',
+      },
+      {
+        ...airports.find(a => a.id === 'flashleap')!,
+        tag: '🎮 电竞极速低延迟',
+        tagColor: 'bg-blue-50 text-blue-700 border-blue-200',
+        highlight: '外服游戏与电竞联机专属低抖动专线，晚高峰秒级响应',
+      },
+    ],
   },
+  // 第 2 批：AI原生与大带宽主力
   {
-    ...airports.find(a => a.id === 'yinxingren')!,
-    tag: '⚡ 晚高峰专线抗封王',
-    tagColor: 'bg-purple-50 text-purple-700 border-purple-200',
-    highlight: '全天候纯内网专线，晚高峰 0 丢包，企业与重度用户首选',
+    page: 2,
+    title: '第二组：AI 原生解锁与大带宽主力',
+    nextSummary: '下一页包含：暮光网络、飞猫云、梯子云等',
+    items: [
+      {
+        ...airports.find(a => a.id === 'wavenet')!,
+        tag: '🚀 千兆大带宽首选',
+        tagColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+        highlight: '超大带宽冗余，YouTube 4K码率峰值秒开，大流量下载必备',
+      },
+      {
+        ...airports.find(a => a.id === 'lingmao')!,
+        tag: '🤖 AI 原生纯净节点',
+        tagColor: 'bg-cyan-50 text-cyan-700 border-cyan-200',
+        highlight: 'ChatGPT/Claude 专属高纯净度住宅IP，告别封号与拒绝访问',
+      },
+      {
+        ...airports.find(a => a.id === 'kuajiecloud')!,
+        tag: '💎 涉外全专线旗舰',
+        tagColor: 'bg-violet-50 text-violet-700 border-violet-200',
+        highlight: '跨境电商与涉外办公旗舰专线，支持全球多机房容灾切换',
+      },
+    ],
   },
+  // 第 3 批：老牌稳定与高口碑之选
   {
-    ...airports.find(a => a.id === 'feimaoyun')!,
-    tag: '🎬 4K追剧与新手免折腾',
-    tagColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    highlight: '年付折算仅 ¥7/月，全节点原生 IP 智能解锁 Netflix/Disney+',
+    page: 3,
+    title: '第三组：老牌稳定与高口碑首选',
+    nextSummary: '下一页包含：飞V平民神机、萤火虫、无忧等',
+    items: [
+      {
+        ...airports.find(a => a.id === 'muguang')!,
+        tag: '🛡️ 商务高可用专线',
+        tagColor: 'bg-amber-50 text-amber-700 border-amber-200',
+        highlight: '双冗余混合调度，大带宽抗攻击，团队协作与稳定办公主力',
+      },
+      {
+        ...airports.find(a => a.id === 'feimaoyun')!,
+        tag: '🎬 4K追剧与新手免折腾',
+        tagColor: 'bg-blue-50 text-blue-700 border-blue-200',
+        highlight: '年付折算仅 ¥7/月，全节点原生 IP 智能解锁 Netflix/Disney+',
+      },
+      {
+        ...airports.find(a => a.id === 'laddercloud')!,
+        tag: '👑 老牌长跑稳定王',
+        tagColor: 'bg-rose-50 text-rose-700 border-rose-200',
+        highlight: '多年稳定运营口碑，全平台客户端深度适配，流媒体全解锁',
+      },
+    ],
   },
+  // 第 4 批：平民白菜与轻量之选
   {
-    ...airports.find(a => a.id === 'muguang')!,
-    tag: '🛡️ 商务涉外高可用',
-    tagColor: 'bg-amber-50 text-amber-700 border-amber-200',
-    highlight: '双冗余混合调度，大带宽抗攻击，团队协作与稳定办公主力',
+    page: 4,
+    title: '第四组：平价白菜与超低门槛精选',
+    nextSummary: '下一页包含：灵动云、全球云等',
+    items: [
+      {
+        ...airports.find(a => a.id === 'feiv')!,
+        tag: '🏷️ 极致平民门槛首选',
+        tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        highlight: '月付仅 ¥4.9 起，特设永久有效不限时流量包，极佳备用首选',
+      },
+      {
+        ...airports.find(a => a.id === 'firefly')!,
+        tag: '🌟 轻量精品VLESS专线',
+        tagColor: 'bg-amber-50 text-amber-700 border-amber-200',
+        highlight: '年付折算仅 ¥8/月，支持轻量级 VLESS 协议，手机移动端超省电',
+      },
+      {
+        ...airports.find(a => a.id === 'wuyou')!,
+        tag: '✨ 经典中继高性价比',
+        tagColor: 'bg-blue-50 text-blue-700 border-blue-200',
+        highlight: '¥19/月 标配 100GB 充沛流量，支持流媒体原生解锁与全端互联',
+      },
+    ],
+  },
+  // 第 5 批：全球多节点与抗封冗余
+  {
+    page: 5,
+    title: '第五组：智能动态路由与全球云',
+    nextSummary: '点击将循环返回第 1 组精选梯队',
+    items: [
+      {
+        ...airports.find(a => a.id === 'lingdongcloud')!,
+        tag: '🛡️ 智能动态中转路由',
+        tagColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+        highlight: '采用智能动态选路机制，节点遇阻秒级无感切换，高韧性网络',
+      },
+      {
+        ...airports.find(a => a.id === 'quanqiuyun')!,
+        tag: '🌐 全球节点均衡冗余',
+        tagColor: 'bg-purple-50 text-purple-700 border-purple-200',
+        highlight: '多地区多运营商节点广泛覆盖，日常办公与全天候高可用',
+      },
+      {
+        ...airports.find(a => a.id === 'breezenet')!,
+        tag: '🏆 年度性价比总冠军',
+        tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        highlight: '实测通过率第一，低至 ¥8/月享 200GB，全网公认闭眼入首选',
+      },
+    ],
   },
 ];
 ---
 
-<section class="py-12 bg-white border-y border-slate-200/80">
+<section class="py-12 bg-white border-y border-slate-200/80" id="top-picks-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
       <div>
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-2">
           <span>🏆 帮手精选·闭眼入避坑指南</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          2026 年度编辑部精选 TOP 4 梯子推荐
+          2026 年度编辑部精选梯子推荐
         </h2>
         <p class="text-slate-500 text-sm mt-1">
-          告别同质化无意义比价，从 14 家真机实测数据中脱颖而出的 4 个差异化场景首选
+          已收录 14 家真机核验品牌，支持<strong>按页快速翻阅</strong>，算清真实单价与晚高峰丢包
         </p>
       </div>
-      <a
-        href="/ranking/overall/"
-        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 group"
-      >
-        查看 14 品牌完整综合天梯榜
-        <span class="inline-block transition-transform group-hover:translate-x-1 ml-1">&rarr;</span>
-      </a>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="/review/"
+          class="inline-flex items-center text-xs sm:text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-3.5 py-2 rounded-xl transition-colors"
+        >
+          🏢 14 品牌独立专区 &rarr;
+        </a>
+      </div>
     </div>
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {topAirports.map((item) => (
-        <div class="flex flex-col justify-between bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-200 group">
-          <div>
-            <!-- Header Badge & Price -->
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class={`text-[11px] font-bold px-2.5 py-1 rounded-md border ${item.tagColor}`}>
-                {item.tag}
-              </span>
-              <div class="text-right">
-                <span class="text-xl font-black text-slate-900">¥{item.startingPrice}</span>
-                <span class="text-xs text-slate-500">/{item.plans[0].period}</span>
+    <!-- Paginated Groups Container -->
+    <div id="airport-groups-container">
+      {airportGroups.map((group) => (
+        <div
+          class={`airport-page-group grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ${group.page === 1 ? 'grid' : 'hidden'}`}
+          data-page={group.page}
+        >
+          <!-- 3 Airport Cards -->
+          {group.items.map((item) => (
+            <div class="flex flex-col justify-between bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-200 group">
+              <div>
+                <!-- Header Badge & Price -->
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class={`text-[11px] font-bold px-2.5 py-1 rounded-md border ${item.tagColor}`}>
+                    {item.tag}
+                  </span>
+                  <div class="text-right">
+                    <span class="text-xl font-black text-slate-900">¥{item.startingPrice}</span>
+                    <span class="text-xs text-slate-500">/{item.plans[0].period}</span>
+                  </div>
+                </div>
+
+                <!-- Title & Protocols -->
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <a href={`/review/${item.slug}/`} class="hover:underline">
+                    {item.name}
+                  </a>
+                </h3>
+                <p class="text-xs text-slate-500 mt-1 line-clamp-2">
+                  {item.highlight}
+                </p>
+
+                <!-- Key Specs -->
+                <div class="grid grid-cols-2 gap-2 my-4 p-3 bg-white group-hover:bg-slate-50 rounded-xl border border-slate-200/80 text-xs">
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">起步可用流量</span>
+                    <span class="font-bold text-slate-800">{item.plans[0].trafficGb} GB</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">折算单价</span>
+                    <span class="font-bold text-blue-600">{item.plans[0].unitPricePerGb.toFixed(3)} 元/GB</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">丢包实测</span>
+                    <span class="font-bold text-emerald-600">&lt; 0.4%</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">设备支持</span>
+                    <span class="font-bold text-slate-800">{item.deviceLimit.split('同时')[0]}</span>
+                  </div>
+                </div>
+
+                <!-- Features -->
+                <ul class="space-y-1.5 text-xs text-slate-600 mb-4">
+                  {item.advantages.slice(0, 2).map((adv) => (
+                    <li class="flex items-start gap-1.5">
+                      <span class="text-emerald-500 font-bold shrink-0">✓</span>
+                      <span class="line-clamp-1">{adv}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Coupon & Action -->
+              <div class="pt-3 border-t border-slate-200/60">
+                {item.coupon && (
+                  <div class="mb-3 px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-between text-xs text-amber-800">
+                    <span>专属券码：</span>
+                    <code class="font-mono font-bold text-amber-900">{item.coupon}</code>
+                  </div>
+                )}
+                <div class="grid grid-cols-2 gap-2">
+                  <a
+                    href={`/review/${item.slug}/`}
+                    class="text-center py-2 px-3 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-colors"
+                  >
+                    独立评测
+                  </a>
+                  <a
+                    href={item.affiliateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    class="text-center py-2 px-3 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors shadow-sm"
+                  >
+                    官网直达 &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <!-- 第 4 个卡槽：看下一页的机场 专属交互卡片 (完美解决红框位置) -->
+          <div class="flex flex-col justify-between bg-gradient-to-br from-blue-50/80 via-indigo-50/40 to-white rounded-2xl p-6 border-2 border-dashed border-blue-300 hover:border-blue-500 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group next-page-trigger-card">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-600 text-white shadow-sm">
+                  ⚡ 翻页速查
+                </span>
+                <span class="text-xs font-bold text-blue-700">
+                  第 {group.page} / 5 组
+                </span>
+              </div>
+
+              <h3 class="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors flex items-center gap-1.5">
+                <span>👉 查看下一页的机场</span>
+                <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+              </h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                点击立即切换查看下一批精选机场！已收录全网 14 家真实评测品牌，随时随地自由翻阅。
+              </p>
+
+              <!-- Next Preview Pill -->
+              <div class="my-4 p-3 bg-white/90 rounded-xl border border-blue-200/80 text-xs">
+                <span class="text-blue-600 font-bold block text-[11px] mb-1">
+                  {group.page < 5 ? '🔜 下一页包含：' : '🔄 循环预览：'}
+                </span>
+                <span class="text-slate-700 text-xs font-medium leading-normal block">
+                  {group.nextSummary}
+                </span>
               </div>
             </div>
 
-            <!-- Title & Protocols -->
-            <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-              {item.name}
-            </h3>
-            <p class="text-xs text-slate-500 mt-1 line-clamp-2">
-              {item.highlight}
-            </p>
-
-            <!-- Key Specs -->
-            <div class="grid grid-cols-2 gap-2 my-4 p-3 bg-white group-hover:bg-slate-50 rounded-xl border border-slate-200/80 text-xs">
-              <div>
-                <span class="text-slate-400 block text-[10px]">起步可用流量</span>
-                <span class="font-bold text-slate-800">{item.plans[0].trafficGb} GB</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">折算单价</span>
-                <span class="font-bold text-blue-600">{item.plans[0].unitPricePerGb.toFixed(3)} 元/GB</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">丢包实测</span>
-                <span class="font-bold text-emerald-600">&lt; 0.4%</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">设备支持</span>
-                <span class="font-bold text-slate-800">{item.deviceLimit.split('同时')[0]}</span>
-              </div>
-            </div>
-
-            <!-- Features -->
-            <ul class="space-y-1.5 text-xs text-slate-600 mb-4">
-              {item.advantages.slice(0, 2).map((adv) => (
-                <li class="flex items-start gap-1.5">
-                  <span class="text-emerald-500 font-bold shrink-0">✓</span>
-                  <span>{adv}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Coupon & Action -->
-          <div class="pt-3 border-t border-slate-200/60">
-            {item.coupon && (
-              <div class="mb-3 px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-between text-xs text-amber-800">
-                <span>专属券码：</span>
-                <code class="font-mono font-bold text-amber-900">{item.coupon}</code>
-              </div>
-            )}
-            <div class="grid grid-cols-2 gap-2">
-              <a
-                href={`/review/${item.slug}/`}
-                class="text-center py-2 px-3 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-colors"
+            <div class="pt-3 border-t border-blue-200/60 space-y-2">
+              <button
+                type="button"
+                class="w-full py-2.5 px-4 text-xs font-bold text-white bg-blue-600 group-hover:bg-blue-700 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1.5"
               >
-                查看实测
-              </a>
-              <a
-                href={item.affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                class="text-center py-2 px-3 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors shadow-sm"
-              >
-                官网直达 &rarr;
-              </a>
+                <span>{group.page < 5 ? '点击翻到下一页' : '循环返回第 1 页'}</span>
+                <span>&rarr;</span>
+              </button>
+              <div class="text-center">
+                <span class="text-[11px] text-slate-500 font-medium">
+                  可使用下方按钮直接跳页
+                </span>
+              </div>
             </div>
           </div>
         </div>
       ))}
     </div>
+
+    <!-- 底部控制栏：红框位置全套翻页与下一页功能 -->
+    <div class="mt-8 p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <!-- 快捷翻页动作按钮 -->
+      <div class="flex items-center flex-wrap gap-2.5">
+        <button
+          type="button"
+          id="btn-prev-page"
+          class="px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 shadow-sm transition-all flex items-center gap-1 active:scale-95"
+        >
+          <span>&larr;</span>
+          <span>上一页</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-next-page"
+          class="px-5 py-2.5 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-500/20 transition-all flex items-center gap-1.5 hover:scale-[1.02] active:scale-95 cursor-pointer"
+        >
+          <span>👉 点击看下一页的机场</span>
+          <span>&rarr;</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-shuffle-page"
+          class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 transition-all flex items-center gap-1"
+        >
+          <span>🔄 换一批</span>
+        </button>
+      </div>
+
+      <!-- 页码快速直达导航 -->
+      <div class="flex items-center gap-1.5">
+        {airportGroups.map((g) => (
+          <button
+            type="button"
+            data-target-page={g.page}
+            class={`pagination-num-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              g.page === 1
+                ? 'active bg-blue-600 text-white shadow-sm'
+                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+            }`}
+          >
+            第 {g.page} 组
+          </button>
+        ))}
+      </div>
+
+      <!-- 状态指示器 -->
+      <div class="text-xs text-slate-500 text-right">
+        当前展示: <strong class="text-blue-600 font-bold" id="page-status-indicator">第 1 / 5 组</strong>（共 14 家品牌）
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  let currentPage = 1;
+  const totalPages = 5;
+
+  function switchPage(page: number) {
+    if (page < 1) page = totalPages;
+    if (page > totalPages) page = 1;
+    currentPage = page;
+
+    // 切换卡片组显隐
+    document.querySelectorAll<HTMLElement>('.airport-page-group').forEach((el) => {
+      const p = parseInt(el.getAttribute('data-page') || '1', 10);
+      if (p === currentPage) {
+        el.classList.remove('hidden');
+        el.classList.add('grid');
+      } else {
+        el.classList.add('hidden');
+        el.classList.remove('grid');
+      }
+    });
+
+    // 切换页码高亮状态
+    document.querySelectorAll<HTMLButtonElement>('.pagination-num-btn').forEach((btn) => {
+      const p = parseInt(btn.getAttribute('data-target-page') || '1', 10);
+      if (p === currentPage) {
+        btn.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+        btn.classList.remove('bg-white', 'text-slate-600', 'border');
+      } else {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+      }
+    });
+
+    // 更新文本指示器
+    const indicator = document.getElementById('page-status-indicator');
+    if (indicator) {
+      indicator.textContent = `第 ${currentPage} / ${totalPages} 组`;
+    }
+  }
+
+  // 绑定下一页按钮
+  document.getElementById('btn-next-page')?.addEventListener('click', () => {
+    switchPage(currentPage + 1);
+  });
+
+  // 绑定上一页按钮
+  document.getElementById('btn-prev-page')?.addEventListener('click', () => {
+    switchPage(currentPage - 1);
+  });
+
+  // 绑定换一批按钮
+  document.getElementById('btn-shuffle-page')?.addEventListener('click', () => {
+    let next = Math.floor(Math.random() * totalPages) + 1;
+    if (next === currentPage) next = (currentPage % totalPages) + 1;
+    switchPage(next);
+  });
+
+  // 绑定卡片内「查看下一页机场」卡槽点击事件
+  document.querySelectorAll<HTMLElement>('.next-page-trigger-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      switchPage(currentPage + 1);
+    });
+  });
+
+  // 绑定页码直达按钮
+  document.querySelectorAll<HTMLButtonElement>('.pagination-num-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const p = parseInt(btn.getAttribute('data-target-page') || '1', 10);
+      switchPage(p);
+    });
+  });
+</script>
