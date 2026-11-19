@@ -263,7 +263,8 @@ function generateIndex() {
         </div>
         
         <h1 class="hero-title">
-          🤖 GPT梯子机场帮手：拯救掉线与跑路！2026精选<span class="highlight">机场推荐</span>与<span class="highlight">梯子选购指南</span>
+          <span style="display: block; margin-bottom: 0.35rem;">🤖 GPT梯子机场帮手：拯救掉线与跑路！</span>
+          <span>2026精选<span class="highlight">机场推荐</span>与<span class="highlight">梯子选购指南</span></span>
         </h1>
         
         <p class="hero-subtitle">
