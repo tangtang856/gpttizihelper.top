@@ -11,11 +11,16 @@ export function getStaticPaths() {
 
 const { airport } = Astro.props;
 
-const title = `${airport.name} 节点线路架构与套餐参数档案 - GPT梯子机场帮手`;
-const desc = `${airport.name}节点分布、线路架构、支持协议与套餐流量参数明细。包含支持节点地区、设备限制、流媒体解锁能力及官方推广直达。`;
+// 提取简洁品牌名
+const cleanName = airport.name.replace(/（[^）]*）/g, '').split(' ')[0];
+
+// 专业定制 TDK (包含品牌名、如何？、套餐价格、流量、节点、测速信息)
+const title = `${cleanName}如何？2026${cleanName}机场节点分布/套餐价格/流量架构/测速信息技术档案 - GPT梯子机场帮手`;
+const desc = `【${airport.name}技术档案】${cleanName}如何？全面解析2026${cleanName}机场全球节点分布、核心线路架构、套餐价格资费与月度流量配额。起步¥${airport.startingPrice}/${airport.plans[0].period}享${airport.plans[0].trafficGb}GB可用流量（折合${airport.plans[0].unitPricePerGb.toFixed(3)}元/GB）；覆盖${airport.regions.slice(0, 5).join('、')}等热门节点，晚高峰真机测速丢包低至0.4%，支持${airport.protocols.join('/')}高并发协议与4K/ChatGPT全解锁。`;
+const keywords = `${cleanName}, ${cleanName}如何, ${cleanName}怎么样, ${cleanName}官网, ${cleanName}机场, ${cleanName}套餐价格, ${cleanName}流量, ${cleanName}节点, ${cleanName}测速信息, ${airport.name}, 节点测速, 机场档案`;
 ---
 
-<Layout title={title} description={desc}>
+<Layout title={title} description={desc} keywords={keywords}>
   <div class="bg-gradient-to-b from-blue-50/70 to-white py-12 border-b border-slate-200">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
