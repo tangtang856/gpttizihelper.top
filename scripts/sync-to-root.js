@@ -46,6 +46,12 @@ for (const file of staticFiles) {
   }
 }
 
+// 自动生成一份标准的 sitemap.xml 作为 sitemap-index.xml 的镜像，确保通用兼容
+if (fs.existsSync(path.join(distDir, 'sitemap-index.xml'))) {
+  fs.copyFileSync(path.join(distDir, 'sitemap-index.xml'), path.join(rootDir, 'sitemap.xml'));
+  fs.copyFileSync(path.join(distDir, 'sitemap-index.xml'), path.join(distDir, 'sitemap.xml'));
+}
+
 // 计算两个路径之间的相对链接（支持 file:// 离线协议）
 function toRelativeUrl(fromHtmlPath, targetAbsUrl) {
   const fromDir = path.dirname(fromHtmlPath);
