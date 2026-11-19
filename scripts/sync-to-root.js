@@ -26,21 +26,45 @@ function copyDirSync(src, dest) {
   }
 }
 
-// 复制 _astro 资源目录到根目录
+// 复制 _astro 静态资源目录到根目录
 if (fs.existsSync(path.join(distDir, '_astro'))) {
   copyDirSync(path.join(distDir, '_astro'), path.join(rootDir, '_astro'));
   console.log('✓ 已复制 _astro 静态资源目录至根目录');
 }
 
 // 复制 sitemap, robots, etc.
-const staticFiles = ['sitemap-index.xml', 'sitemap-0.xml', 'robots.txt', 'BingSiteAuth.xml', '8f4b5e67a91249b5812e9b01c1827439.txt'];
+const staticFiles = [
+  'sitemap-index.xml',
+  'sitemap-0.xml',
+  'robots.txt',
+  'BingSiteAuth.xml',
+  '8f4b5e67a91249b5812e9b01c1827439.txt',
+];
 for (const file of staticFiles) {
   if (fs.existsSync(path.join(distDir, file))) {
     fs.copyFileSync(path.join(distDir, file), path.join(rootDir, file));
   }
 }
 
-// 2. 处理所有 HTML 文件并转换为 file:// 相对路径兼容格式
+// 计算两个路径之间的相对链接（支持 file:// 离线协议）
+function toRelativeUrl(fromHtmlPath, targetAbsUrl) {
+  const fromDir = path.dirname(fromHtmlPath);
+  let targetFile = targetAbsUrl.replace(/^\//, '');
+  if (!targetFile || targetFile === '/') {
+    targetFile = 'index.html';
+  } else if (targetFile.endsWith('/')) {
+    targetFile += 'index.html';
+  } else if (!targetFile.endsWith('.html') && !targetFile.includes('.')) {
+    targetFile += '/index.html';
+  }
+  let rel = path.relative(fromDir, targetFile).split(path.sep).join('/');
+  if (!rel.startsWith('.') && !rel.startsWith('/')) {
+    rel = './' + rel;
+  }
+  return rel;
+}
+
+// 获取所有 HTML 文件
 function getAllHtmlFiles(dir) {
   let files = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -58,13 +82,12 @@ function getAllHtmlFiles(dir) {
 }
 
 const distHtmlFiles = getAllHtmlFiles(distDir);
-console.log(`📦 正在同步并适配 ${distHtmlFiles.length} 个 HTML 页面至根目录 (支持 file:// 本地直接双击打开)...`);
+console.log(`📦 正在同步并精准转换 ${distHtmlFiles.length} 个页面的相对链接 (100% 适配 file:// 本地双击与点击跳转)...`);
 
 for (const filePath of distHtmlFiles) {
-  const relFromDist = path.relative(distDir, filePath); // 例如 'index.html', 'about/index.html', 'recommend/budget/index.html'
+  const relFromDist = path.relative(distDir, filePath).split(path.sep).join('/');
   const targetPath = path.join(rootDir, relFromDist);
 
-  // 确保目标目录存在
   const targetDir = path.dirname(targetPath);
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });
@@ -72,51 +95,55 @@ for (const filePath of distHtmlFiles) {
 
   let html = fs.readFileSync(filePath, 'utf8');
 
-  // 计算相对根目录的深度
-  // 'index.html' -> depth = 0 -> prefix = './'
-  // 'about/index.html' -> depth = 1 -> prefix = '../'
-  // 'recommend/budget/index.html' -> depth = 2 -> prefix = '../../'
-  const segments = relFromDist.split(path.sep);
-  const depth = segments.length - 1;
-  const prefix = depth === 0 ? './' : '../'.repeat(depth);
+  // 计算当前文件目录到根目录的 _astro 相对路径
+  const fromDir = path.dirname(relFromDist);
+  let astroRel = path.relative(fromDir, '_astro').split(path.sep).join('/');
+  if (!astroRel.startsWith('.') && !astroRel.startsWith('/')) {
+    astroRel = './' + astroRel;
+  }
 
-  // 替换静态资源与内链为相对路径
-  // 1. _astro 资源
-  html = html.replace(/(href|src)=["']\/_astro\//g, `$1="${prefix}_astro/`);
+  // 1. 替换 _astro 资源路径
+  html = html.replace(/(href|src)=["']\/_astro\//g, `$1="${astroRel}/`);
 
-  // 2. 根目录首页链接
-  html = html.replace(/href=["']\/["']/g, `href="${prefix}index.html"`);
+  // 2. 替换首页链接 href="/"
+  const indexRel = toRelativeUrl(relFromDist, '/');
+  html = html.replace(/href=["']\/["']/g, `href="${indexRel}"`);
 
-  // 3. 各模块路由转换为相对 index.html 路径
-  // 例如 href="/recommend/budget/" -> href="${prefix}recommend/budget/index.html"
-  html = html.replace(/href=["']\/([a-zA-Z0-9_\-\/]+)\/["']/g, (match, p1) => {
-    return `href="${prefix}${p1}/index.html"`;
+  // 3. 替换内部页面路由 href="/path/to/slug/"
+  html = html.replace(/href=["'](\/[a-zA-Z0-9_\-\/]+?\/?)["']/g, (match, p1) => {
+    // 忽略外部链接或非站内路由
+    if (p1.startsWith('//') || p1.includes(':')) return match;
+    const relLink = toRelativeUrl(relFromDist, p1);
+    return `href="${relLink}"`;
   });
 
-  // 4. 处理单页面（如 /404.html 等）
-  html = html.replace(/href=["']\/([a-zA-Z0-9_\-]+)\.html["']/g, (match, p1) => {
-    return `href="${prefix}${p1}.html"`;
+  // 4. 替换单文件页面 href="/x.html"
+  html = html.replace(/href=["'](\/[a-zA-Z0-9_\-]+\.html)["']/g, (match, p1) => {
+    const relLink = toRelativeUrl(relFromDist, p1);
+    return `href="${relLink}"`;
   });
 
-  // 写入到根目录对应位置
+  // 写入根目录对应文件
   fs.writeFileSync(targetPath, html, 'utf8');
 
-  // 同时如果目标是 x/index.html，且 depth === 1，生成一份 x.html，方便用户直接点击 x.html
-  if (depth === 1 && path.basename(targetPath) === 'index.html') {
-    const parentDirName = path.basename(path.dirname(targetPath));
-    const flatFile = path.join(rootDir, `${parentDirName}.html`);
-    // flatFile 的 depth 是 0
+  // 同时如果是一级栏目（如 blog/index.html -> blog.html），生成一份同名 flat 文件
+  const segments = relFromDist.split('/');
+  if (segments.length === 2 && segments[1] === 'index.html') {
+    const flatFile = path.join(rootDir, `${segments[0]}.html`);
     let flatHtml = fs.readFileSync(filePath, 'utf8');
     flatHtml = flatHtml.replace(/(href|src)=["']\/_astro\//g, `$1="./_astro/`);
     flatHtml = flatHtml.replace(/href=["']\/["']/g, `href="./index.html"`);
-    flatHtml = flatHtml.replace(/href=["']\/([a-zA-Z0-9_\-\/]+)\/["']/g, (match, p1) => {
-      return `href="./${p1}/index.html"`;
+    flatHtml = flatHtml.replace(/href=["'](\/[a-zA-Z0-9_\-\/]+?\/?)["']/g, (match, p1) => {
+      if (p1.startsWith('//') || p1.includes(':')) return match;
+      const relLink = toRelativeUrl(`${segments[0]}.html`, p1);
+      return `href="${relLink}"`;
     });
-    flatHtml = flatHtml.replace(/href=["']\/([a-zA-Z0-9_\-]+)\.html["']/g, (match, p1) => {
-      return `href="./${p1}.html"`;
+    flatHtml = flatHtml.replace(/href=["'](\/[a-zA-Z0-9_\-]+\.html)["']/g, (match, p1) => {
+      const relLink = toRelativeUrl(`${segments[0]}.html`, p1);
+      return `href="${relLink}"`;
     });
     fs.writeFileSync(flatFile, flatHtml, 'utf8');
   }
 }
 
-console.log('✅ 根目录 index.html 及全站各级页面同步与相对路径离线适配完成！');
+console.log('✅ 同步完成！所有卡片、标题及链接均已支持直接点击跳转。');

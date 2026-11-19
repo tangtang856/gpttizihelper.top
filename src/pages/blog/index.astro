@@ -4,16 +4,6 @@ import { allArticles } from '../../data/allArticles';
 
 const title = "科学上网技术博客与避坑实录 (100篇) - 机场评测与专线深度剖析";
 const desc = "2026专业科学上网博客与深度测评专栏。覆盖IEPL/IPLC专线底层架构、原生商业IP解锁机制、晚高峰防卡顿优化与防跑路避坑指南。";
-
-// Group articles by category
-const categories = [
-  '💡 入门与科普',
-  '⚡ 专线与架构',
-  '🤖 ChatGPT与AI',
-  '🎬 4K流媒体',
-  '🛡️ 安全与隐私',
-  '📉 避坑与维权',
-];
 ---
 
 <Layout title={title} description={desc}>
@@ -34,7 +24,10 @@ const categories = [
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {allArticles.map((art, idx) => (
-        <article class="flex flex-col justify-between p-5 bg-white rounded-2xl border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group">
+        <a
+          href={`/blog/${art.slug}/`}
+          class="flex flex-col justify-between p-5 bg-white rounded-2xl border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition-all group block cursor-pointer"
+        >
           <div>
             <div class="flex items-center justify-between gap-2 mb-2">
               <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">
@@ -43,20 +36,18 @@ const categories = [
               <span class="text-xs text-slate-400 font-mono">#{(idx + 1).toString().padStart(3, '0')}</span>
             </div>
             <h2 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2">
-              <a href={`/blog/${art.slug}/`}>
-                {art.title}
-              </a>
+              {art.title}
             </h2>
             <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
               {art.desc}
             </p>
           </div>
 
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 group-hover:text-emerald-600 transition-colors">
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 group-hover:text-emerald-600 transition-colors font-medium">
             <span>阅读深度分析</span>
-            <span>&rarr;</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
           </div>
-        </article>
+        </a>
       ))}
     </div>
   </div>
