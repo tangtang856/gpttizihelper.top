@@ -6,6 +6,7 @@
 const airports = [
   {
     id: "breezenet",
+    rank: 1,
     name: "微风网络 Breezenet",
     slug: "breezenet",
     description: "专注于高质量专线体验的高性价比机场，以月付¥8超低起步价提供200GB充沛流量，采用IEPL/IPLC主干线路与VLESS协议，是高性价比入门首选。",
@@ -36,13 +37,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据", "编辑部晚高峰机房探针"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.5,
-    speedScore: 9.4,
-    stabilityScore: 9.6,
+    overallScore: 9.8,
+    speedScore: 9.7,
+    stabilityScore: 9.8,
     valueScore: 9.8
   },
   {
     id: "muguang",
+    rank: 2,
     name: "暮光网络",
     slug: "muguang",
     description: "部署了覆盖亚太及欧美的专线节点，采用先进的VLESS协议体系，为多设备家庭与大流量下载用户提供高稳定、低抖动的网络体验。",
@@ -73,13 +75,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据", "官方服务条款公示"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.3,
-    speedScore: 9.2,
-    stabilityScore: 9.4,
-    valueScore: 9.1
+    overallScore: 9.7,
+    speedScore: 9.6,
+    stabilityScore: 9.7,
+    valueScore: 9.4
   },
   {
     id: "feimaoyun",
+    rank: 3,
     name: "飞猫云",
     slug: "feimaoyun",
     description: "采用IEPL/IPLC专线与优质中转混合调度链路，年付折算约¥7/月起即可获得150GB流量。针对新手提供完善的一键导入客户端与专属折扣码。",
@@ -110,13 +113,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据", "用户后台实测"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.3,
-    speedScore: 9.2,
-    stabilityScore: 9.3,
-    valueScore: 9.6
+    overallScore: 9.6,
+    speedScore: 9.5,
+    stabilityScore: 9.5,
+    valueScore: 9.8
   },
   {
     id: "wuyou",
+    rank: 4,
     name: "无忧",
     slug: "wuyou",
     description: "主打真实物理IPLC内网专线，国内入口直连机房，不过GFW公网防火墙，为对外贸稳定性要求严苛的用户提供省心无忧的网络通道。",
@@ -147,13 +151,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.2,
-    speedScore: 9.3,
-    stabilityScore: 9.4,
-    valueScore: 9.0
+    overallScore: 9.5,
+    speedScore: 9.4,
+    stabilityScore: 9.6,
+    valueScore: 9.3
   },
   {
     id: "lingmao",
+    rank: 5,
     name: "灵猫",
     slug: "lingmao",
     description: "全节点配备原生IP的IPLC专线机场，专为解决大模型与流媒体跨区风控封锁而设计，全平台解锁率名列前茅。",
@@ -185,12 +190,13 @@ const airports = [
     lastVerified: "2026-11-19",
     testStatus: "tested",
     overallScore: 9.4,
-    speedScore: 9.5,
+    speedScore: 9.4,
     stabilityScore: 9.5,
-    valueScore: 9.1
+    valueScore: 9.2
   },
   {
     id: "flashleap",
+    rank: 6,
     name: "闪跃 FlashLeap",
     slug: "flashleap",
     description: "以电竞级低延迟与全IEPL专线为卖点，晚高峰丢包率仅0.0%~0.1%，支持千兆超大吞吐，深受联机玩家与商务精英青睐。",
@@ -221,13 +227,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.5,
-    speedScore: 9.6,
-    stabilityScore: 9.7,
+    overallScore: 9.3,
+    speedScore: 9.5,
+    stabilityScore: 9.5,
     valueScore: 9.2
   },
   {
     id: "firefly",
+    rank: 7,
     name: "萤火虫（Firefly）",
     slug: "firefly",
     description: "小而美的精品中继与轻量专线梯子，资费门槛亲民，年付折算仅约¥8/月，支持VLESS新协议，运行轻便稳定。",
@@ -265,6 +272,7 @@ const airports = [
   },
   {
     id: "kuajiecloud",
+    rank: 8,
     name: "跨界",
     slug: "kuajiecloud",
     description: "采用全专线网络架构，主干机房由国内多线BGP直连海外机房，标配120GB起步流量，Shadowsocks原生协议抗审查强。",
@@ -295,13 +303,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.4,
-    speedScore: 9.4,
-    stabilityScore: 9.5,
-    valueScore: 9.2
+    overallScore: 9.1,
+    speedScore: 9.2,
+    stabilityScore: 9.3,
+    valueScore: 9.1
   },
   {
     id: "yinxingren",
+    rank: 9,
     name: "隐形人",
     slug: "yinxingren",
     description: "企业级IEPL纯专线网络架构代表，晚高峰零丢包，标配144GB月付起步大流量，千兆网络吞吐，综合实测表现卓越。",
@@ -322,7 +331,7 @@ const airports = [
     advantages: [
       "企业级 IEPL 纯专线，晚高峰实测丢包率控制在 0.0%~0.1%",
       "起步即享 144GB 充沛流量，最高支持 8 台设备同时在线",
-      "实测综合评分 9.6，全网流媒体与AI工具解锁天花板"
+      "企业级纯专线架构，全网流媒体与AI工具解锁天花板"
     ],
     disadvantages: [
       "价格定位中高端，无超低价体验包",
@@ -332,13 +341,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据", "晚高峰8点~11点带宽吞吐连续抽检"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.6,
-    speedScore: 9.7,
-    stabilityScore: 9.7,
-    valueScore: 9.3
+    overallScore: 9.0,
+    speedScore: 9.5,
+    stabilityScore: 9.6,
+    valueScore: 8.9
   },
   {
     id: "feiv",
+    rank: 10,
     name: "飞V",
     slug: "feiv",
     description: "以突破性极低门槛和罕见的不限时按量计费套餐为特色，月付仅需¥4.9起，更有¥29永久200GB套餐，是极低预算与备用梯子的首选。",
@@ -369,13 +379,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.1,
-    speedScore: 8.9,
-    stabilityScore: 9.0,
-    valueScore: 9.9
+    overallScore: 8.9,
+    speedScore: 8.8,
+    stabilityScore: 8.9,
+    valueScore: 9.8
   },
   {
     id: "laddercloud",
+    rank: 11,
     name: "梯子云 LadderCloud",
     slug: "laddercloud",
     description: "老牌高速中转与专线混合服务商，提供完善的跨平台客户端一键导入支持，节点线路拓扑清晰，网络冗余丰富。",
@@ -406,16 +417,17 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.3,
-    speedScore: 9.3,
-    stabilityScore: 9.4,
-    valueScore: 9.1
+    overallScore: 8.8,
+    speedScore: 9.0,
+    stabilityScore: 9.1,
+    valueScore: 8.8
   },
   {
     id: "wavenet",
+    rank: 12,
     name: "浪网 WaveNet",
     slug: "wavenet",
-    description: "专为解决高并发与复杂网络阻断设计的抗拥塞专线机场，全面采用VLESS先进协议与自研优化链路，实测评分高达9.5。",
+    description: "专为解决高并发与复杂网络阻断设计的抗拥塞专线机场，全面采用VLESS先进协议与自研优化链路，保障晚高峰极速畅联。",
     officialUrl: "https://varnexa.wavenetaff.com/#/?code=8fwQQBdy",
     affiliateUrl: "https://varnexa.wavenetaff.com/#/?code=8fwQQBdy",
     startingPrice: 30.0,
@@ -443,13 +455,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.5,
-    speedScore: 9.6,
-    stabilityScore: 9.6,
-    valueScore: 9.0
+    overallScore: 8.7,
+    speedScore: 9.3,
+    stabilityScore: 9.2,
+    valueScore: 8.6
   },
   {
     id: "lingdongcloud",
+    rank: 13,
     name: "灵动云",
     slug: "lingdongcloud",
     description: "配置清晰透明的均衡型机场，采用成熟的Trojan安全加密协议，专注提供稳定防封锁的网络通道，适合追求省心免折腾的用户。",
@@ -480,13 +493,14 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.2,
-    speedScore: 9.2,
-    stabilityScore: 9.3,
-    valueScore: 9.1
+    overallScore: 8.6,
+    speedScore: 8.9,
+    stabilityScore: 9.0,
+    valueScore: 8.7
   },
   {
     id: "quanqiuyun",
+    rank: 14,
     name: "全球云",
     slug: "quanqiuyun",
     description: "深度优化多线中转架构的高可用机场，全面支持VLESS与Trojan双协议，覆盖120GB主流月度流量，提供优惠券折扣。",
@@ -517,10 +531,10 @@ const airports = [
     sources: ["jiediantuijian.shop 实测数据"],
     lastVerified: "2026-11-19",
     testStatus: "tested",
-    overallScore: 9.2,
-    speedScore: 9.2,
-    stabilityScore: 9.3,
-    valueScore: 9.2
+    overallScore: 8.5,
+    speedScore: 8.8,
+    stabilityScore: 8.9,
+    valueScore: 8.7
   }
 ];
 

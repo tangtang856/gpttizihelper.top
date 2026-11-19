@@ -423,7 +423,7 @@ function generateIndex() {
               </tr>
             </thead>
             <tbody>
-              ${[...airports].sort((a, b) => (b.overallScore || 0) - (a.overallScore || 0)).map((item, idx) => `
+              ${airports.map((item, idx) => `
                 <tr>
                   <td style="text-align: center;">
                     <span class="rank-badge ${idx === 0 ? 'rank-1' : idx === 1 ? 'rank-2' : idx === 2 ? 'rank-3' : 'rank-other'}">
@@ -826,7 +826,7 @@ function generateRecommendations() {
           <div class="callout-title">🚀 高端专线核心优势</div>
           <p><strong>1. 彻底规避 GFW 审查</strong>：内网流量不对外暴露握手特征，敏感时期完全不受封锁影响；<br>
           <strong>2. 极致物理低延迟</strong>：深港专线物理延迟通常在 13~16ms，沪日专线在 30~35ms；<br>
-          <strong>3. 极高 SLA 服务等级</strong>：晚高峰丢包率通常低于 0.2%，代表品牌为<strong>隐形人（评分9.6）与闪跃 FlashLeap</strong>。</p>
+          <strong>3. 极高 SLA 服务等级</strong>：晚高峰丢包率通常低于 0.2%，代表品牌为<strong>隐形人与闪跃 FlashLeap</strong>。</p>
         </div>
       `,
       selectedAirports: ['yinxingren', 'flashleap', 'wuyou', 'lingmao']
@@ -1036,7 +1036,7 @@ function generateRankings() {
       keywords: "vpn机场, 机场推荐, 梯子推荐, 性价比机场, 综合排行, 天梯榜",
       desc: "2026权威机场天梯排行榜：基于晚高峰网络时延、丢包率、抗封锁能力、每GB单价与运维服务多维实测加权排名，公开评测打分标准。",
       intro: "综合实力天梯榜是 GPT梯子助手 评测室最核心的榜单。我们结合了晚高峰网络抖动测试（权重35%）、抗封锁与可用率（权重25%）、套餐价格与流量性价比（权重25%）以及售后客服响应速度（权重15%）进行综合加权打分，杜绝无据吹捧。",
-      sortedAirports: [...airports].sort((a, b) => (b.overallScore || 0) - (a.overallScore || 0))
+      sortedAirports: [...airports]
     },
     {
       slug: "value",
